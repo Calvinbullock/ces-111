@@ -1,7 +1,9 @@
 """
 Calvin Bullock - April 29th 2023
 
-This program asks the user for a box and 
+This program asks the user for a the number of items they want to 
+box and how many boxs they want to use. The program will then return 
+the number of items that a box will have.
 """
 
 import math
