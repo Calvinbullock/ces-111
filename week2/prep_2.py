@@ -1,7 +1,7 @@
 """
 Calvin Bullock - April 29th 2023
 
-This program ...
+This program asks the user for a box and 
 """
 
 import math
