@@ -8,21 +8,30 @@ the number of items that a box will have.
 
 import math
 
+def items_in_box(items, per_box):
+    """
+    This function will take the input of items and the how many 
+    items you want per box. Then it will return the number of boxes
+    you will need.
+    """
+
+    items = int(items)
+    per_box = int(per_box)
+
+    box_num = items / per_box
+    box_num = math.ceil(box_num)
+
+    return box_num
+
 items = input("Enter the number of items: ") 
 per_box = input("Enter the number of items per box: ")
 
-items = int(items)
-per_box = int(per_box)
-
-answer = items / per_box
-answer = math.ceil(answer)
-
-print(f"For {items} items, packing {per_box} items in each box, you will need {answer} boxes.")
+print(f"For {items} items, packing {per_box} items in each box, you will need {items_in_box(items, per_box)} boxes.")
 
 
 
 
-""" test out put
+""" test - out put
 > python boxes.py
 Enter the number of items: 8
 Enter the number of items per box: 5
