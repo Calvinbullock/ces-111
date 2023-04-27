@@ -1,30 +1,39 @@
+# need date time to find todays time
 from datetime import datetime
 
-
+# COnstattns of state tax and company discount
 TAX = .06
 DISCOUNT = .10
 
-# takes user imput for subtotal and turns it into a float
-subtotal = input("Enter subtotal: ")
+# Quick debug / test
+# subtotal = 42.31
+
+# Takes user imput for subtotal and turns it into a float
+Subtotal = input("Enter subtotal: ")
 subtotal = float(subtotal)
 
-# gets the date and time from the computer
+# This exspands the scope of sales_discount
+sales_discount = 0.0
+
+# Gets the date and time from the computer
 time_and_date = datetime.now()
 day_of_week = time_and_date.weekday()
 
-# checks if the user is viable for discount
+# Checks if the user is viable for discount
 if subtotal >= 50 and (day_of_week == 1 or day_of_week == 2):
 
     # computes the discount
-    subtotal = round(subtotal * DISCOUNT) + subtotal
-
+    sales_discount = round(subtotal * DISCOUNT, 2)
+    print(f"disc: {sales_discount}")
 
 # Calculates the sales tax
-sales_tax = round(subtotal * TAX)
-total = sales_tax + subtotal
+sales_tax = round((subtotal - sales_discount) * TAX, 2)
+
+# Caculates the total with ot with out the discount
+total = round(subtotal + sales_tax - sales_discount, 2)
 
 
-# Displays the time, date and total    
+# Displays the time, date and total
 print(f"Sales tax is {sales_tax}.")
 print(f"your Total at {time_and_date:%Y-%m-%d} was {total}.")
 
