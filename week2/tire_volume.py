@@ -60,9 +60,9 @@ def Write_To_File(purches_confirmation, width, aspect_ratio, diamater, volume):
             file = volume_file)
 
 # Quick test case ----
-width = 185
-aspect_ratio = 50
-diamater = 14
+# width = 185
+# aspect_ratio = 50
+# diamater = 14
 
 # Takes user input # comment out for quick testing
 width = input("Enter the width of the tire in mm (ex 205): ")
