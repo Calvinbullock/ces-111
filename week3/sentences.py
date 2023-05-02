@@ -15,6 +15,7 @@ and volume to a text file names volume.txt.
 import random
 
 def main():
+    # Calls make sentance and prints them to console
     print(make_sentence("single", "past"))
     print(make_sentence("single", "present"))
     print(make_sentence("single", "future"))

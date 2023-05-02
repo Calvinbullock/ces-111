@@ -1,13 +1,13 @@
 
 def main():
-    # Get an odometer value in U.S. miles from the user.
-    odom_start = input("A starting odometer value in miles: ")
+    # # Get an odometer value in U.S. miles from the user.
+    # odom_start = input("A starting odometer value in miles: ")
 
-    # Get another odometer value in U.S. miles from the user.
-    odom_end = input("An ending odometer value in miles: ")
+    # # Get another odometer value in U.S. miles from the user.
+    # odom_end = input("An ending odometer value in miles: ")
 
-    # Get a fuel amount in U.S. gallons from the user.
-    fuel_amt_gal = input("inputAn amount of fuel in gallons: ")
+    # # Get a fuel amount in U.S. gallons from the user.
+    # fuel_amt_gal = input("inputAn amount of fuel in gallons: ")
 
     # Quick test values
     odom_start = 30462
