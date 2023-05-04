@@ -7,23 +7,23 @@ def main():
     """
     Put description here....
     """
-    # TODO Uncoment ----
-    # # Get the user's gender, birthdate, height, and weight.
-    # gender = input("Enter your gender: ")
-    # birthdate = input("Enter birtdate (yyyy-mm-dd): ")
-    # height_inch = input("Enter your height(inchs): ")
-    # weight_lb = input("Enter your weight(lb): ")
+    # TODO Uncoment ---- For production
+    # Get the user's gender, birthdate, height, and weight.
+    gender = input("Enter your gender: ")
+    birthdate = input("Enter birtdate (yyyy-mm-dd): ")
+    height_inch = input("Enter your height(inchs): ")
+    weight_lb = input("Enter your weight(lb): ")
 
-    # # changes height and weight to floats and age to capital
-    # gender.upper()
-    # height_inch = float(height)
-    # weight_lb = float(weight)
+    # changes height and weight to floats and age to capital
+    gender.upper()
+    height_inch = float(height_inch)
+    weight_lb = float(weight_lb)
 
-    # Auto test cases
-    gender = "F"
-    birthdate = "2001-03-21"
-    weight_lb = 125.0
-    height_inch = 54.0
+    # # Auto test cases 
+    # gender = "F"
+    # birthdate = "2001-03-21"
+    # weight_lb = 125.0
+    # height_inch = 54.0
 
     # Call the compute_age, kg_from_lb, cm_from_in,
     # body_mass_index, and basal_metabolic_rate functions
