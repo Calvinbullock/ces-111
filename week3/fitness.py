@@ -22,8 +22,8 @@ def main():
     # Auto test cases
     gender = "F"
     birthdate = "2001-03-21"
-    height_inch = 125.0
-    weight_lb = 54.0
+    weight_lb = 125.0
+    height_inch = 54.0
 
     # Call the compute_age, kg_from_lb, cm_from_in,
     # body_mass_index, and basal_metabolic_rate functions
@@ -67,7 +67,7 @@ def kg_from_lb(pounds):
     Parameter pounds: a mass in U.S. pounds.
     Return: the mass in kilograms.
     """
-    return pounds / 2 * 0.1
+    return round(pounds * 0.45359237, 2)
 
 
 def cm_from_in(inches):
@@ -85,7 +85,7 @@ def body_mass_index(weight, height):
         height: a person's height in centimeters.
     Return: a person's body mass index.
     """
-    return 10000 * weight * height**2
+    return round(10000 * weight / (height ** 2), 2)
 
 
 def basal_metabolic_rate(gender, weight, height, age):
@@ -97,10 +97,10 @@ def basal_metabolic_rate(gender, weight, height, age):
     Return: a person's basal metabolic rate in kcals per day.
     """
     if gender == "F":
-        return 447.593 + 9.247 * weight + 3.098 * height - 4.330 * age
+        return round(447.593 + 9.247 * weight + 3.098 * height - 4.330 * age, 2)
 
     elif gender == "M":
-        return 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age
+        return round(88.362 + 13.397 * weight + 4.799 * height - 5.677 * age, 2)
 
 
 # Call the main function so that
