@@ -2,7 +2,6 @@
 # used to compute a person's age.
 from datetime import datetime
 
-
 def main():
     """
     Put description here....
