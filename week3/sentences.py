@@ -1,19 +1,19 @@
-
 # Calvin Bullock - April 25, 2023
 
 
 import random
 
+
 def main():
     """
     This file computes the volume of a tire.
-    To do this the program asks for user imput for width, aspect ratio, 
+    To do this the program asks for user imput for width, aspect ratio,
     diamiter.The program will retun the aproxamite volume in liters.
 
     The program will print the width, aspect_ratio, diamater, and volume
     to the console.
 
-    It will then pass the time, date, width, aspect_ratio, diamater, 
+    It will then pass the time, date, width, aspect_ratio, diamater,
     and volume to a text file names volume.txt.
     """
     # Calls make sentance and prints them to console
@@ -24,6 +24,7 @@ def main():
     print(make_sentence("plural", "past"))
     print(make_sentence("plural", "present"))
     print(make_sentence("plural", "future"))
+
 
 def get_determiner(quantity):
     """Return a randomly chosen determiner. A determiner is
@@ -50,6 +51,7 @@ def get_determiner(quantity):
     # Randomly choose and return a determiner.
     word = random.choice(words)
     return word
+
 
 def get_noun(quantity):
     """Return a randomly chosen noun.
@@ -80,7 +82,7 @@ def get_noun(quantity):
             "girl",
             "man",
             "rabbit",
-            "woman"
+            "woman",
         ]
     else:
         nouns = [
@@ -93,12 +95,13 @@ def get_noun(quantity):
             "girls",
             "men",
             "rabbits",
-            "women"
+            "women",
         ]
 
     # Randomly choose and return a noun.
     noun = random.choice(nouns)
     return noun
+
 
 def get_verb(quantity, tense):
     """Return a randomly chosen verb. If tense is "past",
@@ -139,7 +142,7 @@ def get_verb(quantity, tense):
             "slept",
             "talked",
             "walked",
-            "wrote"
+            "wrote",
         ]
     elif tense == "present" and quantity == 1:
         verbs = [
@@ -152,7 +155,7 @@ def get_verb(quantity, tense):
             "sleeps",
             "talks",
             "walks",
-            "writes"
+            "writes",
         ]
     elif tense == "present" and quantity != 1:
         verbs = [
@@ -165,7 +168,7 @@ def get_verb(quantity, tense):
             "sleep",
             "talk",
             "walk",
-            "write"
+            "write",
         ]
     elif tense == "future":
         verbs = [
@@ -178,12 +181,83 @@ def get_verb(quantity, tense):
             "will sleep",
             "will talk",
             "will walk",
-            "will write"
+            "will write",
         ]
 
     # Randomly choose and return a verb.
     verb = random.choice(verbs)
     return verb
+
+
+# TODO New 2 below
+
+
+def get_preposition():
+    """Return a randomly chosen preposition
+    from this list of prepositions:
+        "about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"
+
+    Return: a randomly chosen preposition.
+    """
+    preposition = [
+        "about",
+        "above",
+        "across",
+        "after",
+        "along",
+        "around",
+        "at",
+        "before",
+        "behind",
+        "below",
+        "beyond",
+        "by",
+        "despite",
+        "except",
+        "for",
+        "from",
+        "in",
+        "into",
+        "near",
+        "of",
+        "off",
+        "on",
+        "onto",
+        "out",
+        "over",
+        "past",
+        "to",
+        "under",
+        "with",
+        "without",
+    ]
+    return random.choice(preposition)
+
+
+def get_prepositional_phrase(quantity):
+    """Build and return a prepositional phrase composed
+    of three words: a preposition, a determiner, and a
+    noun by calling the get_preposition, get_determiner,
+    and get_noun functions.
+
+    Parameter
+        quantity: an integer that determines if the
+            determiner and noun in the prepositional
+            phrase returned from this function should
+            be single or pluaral.
+    Return: a prepositional phrase.
+    """
+    preposition = get_preposition()
+    determiner = get_determiner(quantity)
+    noun = get_noun(quantity)
+
+    return f"{preposition} {determiner} {noun}"
+
 
 def make_sentence(quantity, tense):
     """Build and return a sentence with three words:
@@ -196,7 +270,12 @@ def make_sentence(quantity, tense):
     determiner = get_determiner(quantity)
     noun = get_noun(quantity)
     verb = get_verb(quantity, tense)
+    preposition = get_prepositional_phrase(quantity)
 
-    return f"{determiner} {noun}, {verb}."
+    # Constructs and returns the final sentance.
+    # TODO add the prepostinal phrase VARIABLE 
+    sentance = f"{determiner} {noun}, {verb} {preposition}." 
+    sentance = sentance.capitalize()
+    return sentance
 
 main()
