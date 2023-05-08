@@ -185,7 +185,6 @@ def get_verb(quantity, tense):
     verb = random.choice(verbs)
     return verb
 
-
 def make_sentence(quantity, tense):
     """Build and return a sentence with three words:
     a determiner, a noun, and a verb. The grammatical
