@@ -274,7 +274,7 @@ def make_sentence(quantity, tense):
 
     # Constructs and returns the final sentance.
     # TODO add the prepostinal phrase VARIABLE 
-    sentance = f"{determiner} {noun}, {verb} {preposition}." 
+    sentance = f"{determiner} {noun} {verb} {preposition}." 
     sentance = sentance.capitalize()
     return sentance
 
