@@ -6,15 +6,7 @@ import random
 
 def main():
     """
-    This file computes the volume of a tire.
-    To do this the program asks for user imput for width, aspect ratio,
-    diamiter.The program will retun the aproxamite volume in liters.
-
-    The program will print the width, aspect_ratio, diamater, and volume
-    to the console.
-
-    It will then pass the time, date, width, aspect_ratio, diamater,
-    and volume to a text file names volume.txt.
+    This file creates basic sentances and prints them to the console.   
     """
     # Calls make sentance and prints them to console
     print(make_sentence("single", "past"))
