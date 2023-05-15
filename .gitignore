@@ -1,2 +1,5 @@
 week2/volume.txt
 week2/volumes.txt
+week5/venv
+week5/.pytest_cache
+week5/__pycache__
