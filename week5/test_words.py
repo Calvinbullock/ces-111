@@ -4,6 +4,25 @@ from words import prefix, suffix
 import pytest
 
 
+def test_suffix():
+    """Verify that the suffex function works correctly.
+    Parameters: none
+    Return: nothing
+    """
+    # Call the suffix function Nine times and use an assert
+    # statement to verify that the string returned by the
+    # suffix function is correct each time.
+    assert suffix("", "") == ""
+    assert suffix("", "correct") == ""
+    assert suffix("clear", "") == ""
+    assert suffix("angelic", "awesome") == ""
+    assert suffix("found", "profound") == "found"
+    assert suffix("ditch", "itch") == "itch"
+    assert suffix("happy", "funny") == "y"
+    assert suffix("tired", "fatigued") == "ed"
+    assert suffix("swimming", "FLYING") == "ing"
+
+
 def test_prefix():
     """Verify that the prefix function works correctly.
     Parameters: none
