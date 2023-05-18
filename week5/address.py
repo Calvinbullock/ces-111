@@ -1,5 +1,6 @@
 # Copyright 2020, Brigham Young University-Idaho. All rights reserved.
 
+
 def extract_city(full_address):
     """Extract and return the name of a city from
     a properly formatted U.S. mailing address.
@@ -40,7 +41,7 @@ def extract_zipcode(full_address):
             number and street, city, state zipcode
     Return: the ZIP code
     """
-    full_address = full_address.strip()
-    last_space_index = full_address.rindex(" ")
-    zipcode = full_address[last_space_index + 1 : ]
+    last_comma_index = full_address.rindex(",")
+    zipcode = full_address[last_comma_index + 1:]
+    zipcode = zipcode.strip()
     return zipcode
