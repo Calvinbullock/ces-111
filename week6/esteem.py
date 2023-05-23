@@ -40,7 +40,6 @@ def main():
         "1. I feel that I am a person of worth, at least on an equal plane with others."
     )
 
-
     # # TODO uncoment for production
     # q_1 = input("Enter D, d, a, or A: ")
     # print("2. I feel that I have a number of good qualities.")
@@ -89,5 +88,6 @@ def main():
 
     print(f"Your score is {total_score}.")
     print("A score below 15 may indicate problematic low self-esteem.")
+
 
 main()
