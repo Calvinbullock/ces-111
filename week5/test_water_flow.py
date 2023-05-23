@@ -2,6 +2,7 @@ from water_flow import (
     water_column_height,
     pressure_gain_from_water_height,
     pressure_loss_from_pipe,
+    pressure_loss_from_fittings,
 )
 import pytest
 
@@ -42,6 +43,19 @@ def test_pressure_loss_from_pipe():
     assert pressure_loss_from_pipe(0.048692, 200, 0.018, 1.65) == -100.462
     assert pressure_loss_from_pipe(0.28687, 1000, 0.013, 1.65) == -61.576
     assert pressure_loss_from_pipe(0.28687, 1800.75, 0.013, 1.65) == -110.884
+
+
+def test_pressure_loss_from_fittings():
+    """
+    Verify that the pressure_loss_from_fittings function works correctly.
+    Parameters: none
+    Return: nothing
+    """
+    assert pressure_loss_from_fittings(0, 3) == 0
+    assert pressure_loss_from_fittings(1.65, 0) == 0
+    assert pressure_loss_from_fittings(1.65, 2) == -0.109
+    assert pressure_loss_from_fittings(1.75, 2) == -0.122
+    assert pressure_loss_from_fittings(1.75, 5) == -0.306
 
 
 # Call the main function that is part of pytest so that the
