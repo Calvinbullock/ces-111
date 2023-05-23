@@ -189,6 +189,13 @@ def main():
 
     print(f"Pressure at house: {pressure:.1f} kilopascals")
 
+    # testing for local main run
+    # Height of water tower (meters): 36.6
+    # Height of water tank walls (meters): 9.1
+    # Length of supply pipe from tank to lot (meters): 1524.0
+    # Number of 90° angles in supply pipe: 3
+    # Length of pipe from supply to house (meters): 15.2
+    # Pressure at house: 158.7 kilopascals
 
 if __name__ == "__main__":
     main()
