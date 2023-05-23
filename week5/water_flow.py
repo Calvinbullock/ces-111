@@ -1,5 +1,9 @@
 import pytest
 
+# Global constant
+# ρ is the density of water (998.2 kilogram / meter3)
+DENSITY_OF_WATER = 998.2
+
 
 def water_column_height(tower_height, tank_height):
     """
@@ -38,7 +42,8 @@ def pressure_gain_from_water_height(height):
     gravity = 9.80665
 
     # Compute and return pressure
-    pressure = (density_of_water * gravity * height) / 1000
+    pressure = (DENSITY_OF_WATER * gravity * height) / 1000
+
     return round(pressure, 3)
 
 
@@ -63,8 +68,9 @@ def pressure_loss_from_pipe(
 
     # P is the lost pressure in kilopascals
     pressure = (
-        -friction_factor * pipe_length * density_of_water * fluid_velocity**2
+        -friction_factor * pipe_length * DENSITY_OF_WATER * fluid_velocity**2
     ) / (2000 * pipe_diameter)
+
     return round(pressure, 3)
 
 
