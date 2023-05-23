@@ -39,6 +39,9 @@ def main():
     print(
         "1. I feel that I am a person of worth, at least on an equal plane with others."
     )
+
+
+    # # TODO uncoment for production
     # q_1 = input("Enter D, d, a, or A: ")
     # print("2. I feel that I have a number of good qualities.")
     # q_2 = input("Enter D, d, a, or A: ")
@@ -59,6 +62,7 @@ def main():
     # print("10. At times I think I am no good at all.")
     # q_10 = input("Enter D, d, a, or A: ")
 
+    # Test cases answer total_anser == 21
     q_1 = "A"
     q_2 = "A"
     q_3 = "D"
