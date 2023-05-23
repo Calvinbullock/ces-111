@@ -19,7 +19,6 @@ def water_column_height(tower_height, tank_height):
     """
 
     water_height = tower_height + (3 * tank_height) / 4
-    print(f"l.17- {water_height}")
     return water_height
 
 
@@ -33,9 +32,6 @@ def pressure_gain_from_water_height(height):
     returns:
     (flaot) pressure gain
     """
-
-    # ρ is the density of water (998.2 kilogram / meter3)
-    density_of_water = 998.2
 
     # g is the acceleration from Earths gravity
     # (9.80665 meter / second2)
@@ -63,9 +59,6 @@ def pressure_loss_from_pipe(
     (flaot) of the pressure lose
     """
 
-    # ρ is the density of water (998.2 kilogram / meter3)
-    density_of_water = 998.2
-
     # P is the lost pressure in kilopascals
     pressure = (
         -friction_factor * pipe_length * DENSITY_OF_WATER * fluid_velocity**2
@@ -76,11 +69,11 @@ def pressure_loss_from_pipe(
 
 def pressure_loss_from_fittings(fluid_velocity, fitting_num):
     """
-    calculates and returns the pressure lose from a fittings on a pipe 
+    calculates and returns the pressure lose from a fittings on a pipe
     in kilopascals,
 
     Paramiters:
-    (int|float) fluid_velocity: is the velocity of the water 
+    (int|float) fluid_velocity: is the velocity of the water
     (int|float) fitting_num: is the quantity of fittings
                         flowing through the pipe in meters / second
 
@@ -151,8 +144,6 @@ def pressure_loss_from_pipe_reduction(
     # the lost pressure kilopascals
     lost_pressure = ((-constant) * DENSITY_OF_WATER * fluid_velocity**2) / 2000
 
-    # P is the lost pressure in kilopascals
-    lost_pressure = ((-0.04) * water_density * fluid_velocity**2 * fitting_num) / 2000
     return round(lost_pressure, 3)
 
 
