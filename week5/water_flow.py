@@ -68,6 +68,28 @@ def pressure_loss_from_pipe(
     return round(pressure, 3)
 
 
+def pressure_loss_from_fittings(fluid_velocity, fitting_num):
+    """
+    calculates and returns the pressure lose from a fittings on a pipe 
+    in kilopascals,
+
+    Paramiters:
+    (int|float) fluid_velocity: is the velocity of the water 
+    (int|float) fitting_num: is the quantity of fittings
+                        flowing through the pipe in meters / second
+
+    returns:
+    (flaot) the lost pressure in kilopascals
+    """
+
+    # ρ is the density of water (998.2 kilogram / meter3)
+    water_density = 998.2
+
+    # P is the lost pressure in kilopascals
+    lost_pressure = ((-0.04) * water_density * fluid_velocity**2 * fitting_num) / 2000
+    return round(lost_pressure, 3)
+
+
 def main():
     print(f"f21- {water_column_height(0, 0)}")
 
