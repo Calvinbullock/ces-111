@@ -1,4 +1,4 @@
-def scoreing_q_1_to_7(score):
+def scoreing_q_1_2_4_6_7(score):
     # Takes letter grade and changes it to number
     match score:
         case "D":
@@ -11,15 +11,15 @@ def scoreing_q_1_to_7(score):
             return 3
 
 
-def scoreing_q_8_to_10(score):
+def scoreing_q_3_5_8_9_10(score):
     # Takes letter grade and changes it to number
     match score:
         case "D":
-            return -3
+            return 3
         case "d":
-            return -2
+            return 2
         case "a":
-            return -1
+            return 1
         case "A":
             return 0
 
@@ -71,16 +71,16 @@ def main():
     q_10 = "d"
 
     total_score = (
-        scoreing_q_1_to_7(q_1)
-        + scoreing_q_1_to_7(q_2)
-        + scoreing_q_1_to_7(q_3)
-        + scoreing_q_1_to_7(q_4)
-        + scoreing_q_1_to_7(q_5)
-        + scoreing_q_1_to_7(q_6)
-        + scoreing_q_1_to_7(q_7)
-        + scoreing_q_8_to_10(q_8)
-        + scoreing_q_8_to_10(q_9)
-        + scoreing_q_8_to_10(q_10)
+        scoreing_q_1_2_4_6_7(q_1)
+        + scoreing_q_1_2_4_6_7(q_2)
+        + scoreing_q_3_5_8_9_10(q_3)
+        + scoreing_q_1_2_4_6_7(q_4)
+        + scoreing_q_3_5_8_9_10(q_5)
+        + scoreing_q_1_2_4_6_7(q_6)
+        + scoreing_q_1_2_4_6_7(q_7)
+        + scoreing_q_3_5_8_9_10(q_8)
+        + scoreing_q_3_5_8_9_10(q_9)
+        + scoreing_q_3_5_8_9_10(q_10)
     )
 
     print(f"Your score is {total_score}.")
