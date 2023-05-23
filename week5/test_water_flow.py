@@ -3,6 +3,8 @@ from water_flow import (
     pressure_gain_from_water_height,
     pressure_loss_from_pipe,
     pressure_loss_from_fittings,
+    reynolds_number,
+    pressure_loss_from_pipe_reduction
 )
 import pytest
 
@@ -56,6 +58,32 @@ def test_pressure_loss_from_fittings():
     assert pressure_loss_from_fittings(1.65, 2) == -0.109
     assert pressure_loss_from_fittings(1.75, 2) == -0.122
     assert pressure_loss_from_fittings(1.75, 5) == -0.306
+
+
+def test_reynolds_number():
+    """
+    Verify that the preynolds_number function works correctly.
+    Parameters: none
+    Return: nothing
+    """
+    assert reynolds_number(0.048692, 0) == 0
+    assert reynolds_number(0.048692, 1.65) == 80069
+    assert reynolds_number(0.048692, 1.75) == 84922
+    assert reynolds_number(0.28687, 1.65) == 471729
+    assert reynolds_number(0.28687, 1.75) == 500318
+
+
+def test_pressure_loss_from_pipe_reduction():
+    """
+    Verify that the pressure_loss_from_pipe_reduction function works 
+    correctly.
+    Parameters: none
+    Return: nothing
+    """
+    assert pressure_loss_from_pipe_reduction(0.28687, 0, 1, 0.048692) == 0
+    assert pressure_loss_from_pipe_reduction(0.28687, 1.65,	471729,	0.048692) == -163.744
+    assert pressure_loss_from_pipe_reduction(0.28687, 1.75,	500318,	0.048692) == -184.182
+
 
 
 # Call the main function that is part of pytest so that the
