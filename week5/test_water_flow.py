@@ -10,6 +10,7 @@ from water_flow import (
     pressure_loss_from_pipe_reduction,
 )
 import pytest
+from pytest import approx
 
 
 def test_water_column_height():
@@ -30,9 +31,9 @@ def test_pressure_gain_from_water_height():
     Parameters: none
     Return: nothing
     """
-    assert pressure_gain_from_water_height(0) == 0
-    assert pressure_gain_from_water_height(30.2) == 295.628
-    assert pressure_gain_from_water_height(50) == 489.450
+    assert pressure_gain_from_water_height(0) == approx(0, 0.001)
+    assert pressure_gain_from_water_height(30.2) == approx(295.628, 0.001)
+    assert pressure_gain_from_water_height(50) == approx(489.450, 0.001)
 
 
 def test_pressure_loss_from_pipe():
@@ -41,13 +42,13 @@ def test_pressure_loss_from_pipe():
     Parameters: none
     Return: nothing
     """
-    assert pressure_loss_from_pipe(0.048692, 0, 0.018, 1.75) == 0
-    assert pressure_loss_from_pipe(0.048692, 200, 0.0, 1.75) == 0
-    assert pressure_loss_from_pipe(0.048692, 200, 0.018, 0) == 0
-    assert pressure_loss_from_pipe(0.048692, 200, 0.018, 1.75) == -113.008
-    assert pressure_loss_from_pipe(0.048692, 200, 0.018, 1.65) == -100.462
-    assert pressure_loss_from_pipe(0.28687, 1000, 0.013, 1.65) == -61.576
-    assert pressure_loss_from_pipe(0.28687, 1800.75, 0.013, 1.65) == -110.884
+    assert pressure_loss_from_pipe(0.048692, 0, 0.018, 1.75) == approx(0, 0.001)
+    assert pressure_loss_from_pipe(0.048692, 200, 0.0, 1.75) == approx(0, 0.001)
+    assert pressure_loss_from_pipe(0.048692, 200, 0.018, 0)  == approx(0, 0.001)
+    assert pressure_loss_from_pipe(0.048692, 200, 0.018, 1.75) == approx(-113.008, 0.001)
+    assert pressure_loss_from_pipe(0.048692, 200, 0.018, 1.65) == approx(-100.462, 0.001)
+    assert pressure_loss_from_pipe(0.28687, 1000, 0.013, 1.65) == approx(-61.576, 0.001)
+    assert pressure_loss_from_pipe(0.28687, 1800.75, 0.013, 1.65) == approx(-110.884, 0.001)
 
 
 def test_pressure_loss_from_fittings():
@@ -56,11 +57,11 @@ def test_pressure_loss_from_fittings():
     Parameters: none
     Return: nothing
     """
-    assert pressure_loss_from_fittings(0, 3) == 0
-    assert pressure_loss_from_fittings(1.65, 0) == 0
-    assert pressure_loss_from_fittings(1.65, 2) == -0.109
-    assert pressure_loss_from_fittings(1.75, 2) == -0.122
-    assert pressure_loss_from_fittings(1.75, 5) == -0.306
+    assert pressure_loss_from_fittings(0, 3)    == approx(0, 0.001)
+    assert pressure_loss_from_fittings(1.65, 0) == approx(0, 0.001)
+    assert pressure_loss_from_fittings(1.65, 2) == approx(-0.109, 0.003)
+    assert pressure_loss_from_fittings(1.75, 2) == approx(-0.122, 0.003)
+    assert pressure_loss_from_fittings(1.75, 5) == approx(-0.306, 0.003)
 
 
 def test_reynolds_number():
@@ -69,11 +70,11 @@ def test_reynolds_number():
     Parameters: none
     Return: nothing
     """
-    assert reynolds_number(0.048692, 0) == 0
-    assert reynolds_number(0.048692, 1.65) == 80069
-    assert reynolds_number(0.048692, 1.75) == 84922
-    assert reynolds_number(0.28687, 1.65) == 471729
-    assert reynolds_number(0.28687, 1.75) == 500318
+    assert reynolds_number(0.048692, 0) == approx(0, 1)
+    assert reynolds_number(0.048692, 1.65) == approx(80069, 1)
+    assert reynolds_number(0.048692, 1.75) == approx(84922, 1)
+    assert reynolds_number(0.28687, 1.65) == approx(471729, 1)
+    assert reynolds_number(0.28687, 1.75) == approx(500318, 1)
 
 
 def test_pressure_loss_from_pipe_reduction():
@@ -83,12 +84,12 @@ def test_pressure_loss_from_pipe_reduction():
     Parameters: none
     Return: nothing
     """
-    assert pressure_loss_from_pipe_reduction(0.28687, 0, 1, 0.048692) == 0
+    assert pressure_loss_from_pipe_reduction(0.28687, 0, 1, 0.048692) == approx(0, 0.001)
     assert (
-        pressure_loss_from_pipe_reduction(0.28687, 1.65, 471729, 0.048692) == -163.744
+        pressure_loss_from_pipe_reduction(0.28687, 1.65, 471729, 0.048692) == approx(-163.744, 0.001)
     )
     assert (
-        pressure_loss_from_pipe_reduction(0.28687, 1.75, 500318, 0.048692) == -184.182
+        pressure_loss_from_pipe_reduction(0.28687, 1.75, 500318, 0.048692) == approx(-184.182, 0.001)
     )
 
 

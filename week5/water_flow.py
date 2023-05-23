@@ -42,7 +42,7 @@ def pressure_gain_from_water_height(height):
     # Compute and return pressure
     pressure = (DENSITY_OF_WATER * gravity * height) / 1000
 
-    return round(pressure, 3)
+    return pressure
 
 
 def pressure_loss_from_pipe(
@@ -66,7 +66,7 @@ def pressure_loss_from_pipe(
         -friction_factor * pipe_length * DENSITY_OF_WATER * fluid_velocity**2
     ) / (2000 * pipe_diameter)
 
-    return round(pressure, 3)
+    return pressure
 
 
 def pressure_loss_from_fittings(fluid_velocity, fitting_num):
@@ -88,7 +88,7 @@ def pressure_loss_from_fittings(fluid_velocity, fitting_num):
         (-0.04) * DENSITY_OF_WATER * fluid_velocity**2 * fitting_num
     ) / 2000
 
-    return round(lost_pressure, 3)
+    return lost_pressure
 
 
 def reynolds_number(hydraulic_diameter, fluid_velocity):
@@ -113,7 +113,7 @@ def reynolds_number(hydraulic_diameter, fluid_velocity):
         DENSITY_OF_WATER * hydraulic_diameter * fluid_velocity
     ) / water_dynamic_viscosity
 
-    return round(reynolds_number)
+    return reynolds_number
 
 
 def pressure_loss_from_pipe_reduction(
@@ -141,12 +141,12 @@ def pressure_loss_from_pipe_reduction(
     )
 
     # round to the ones 1
-    constant = round(constant, 3)
+    constant = constant
 
     # the lost pressure kilopascals
     lost_pressure = ((-constant) * DENSITY_OF_WATER * fluid_velocity**2) / 2000
 
-    return round(lost_pressure, 3)
+    return lost_pressure
 
 
 PVC_SCHED80_INNER_DIAMETER = 0.28687  # (meters)  11.294 inches
