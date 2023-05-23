@@ -88,8 +88,68 @@ def pressure_loss_from_fittings(fluid_velocity, fitting_num):
     (flaot) the lost pressure in kilopascals
     """
 
-    # ρ is the density of water (998.2 kilogram / meter3)
-    water_density = 998.2
+    # P is the lost pressure in kilopascals
+    lost_pressure = (
+        (-0.04) * DENSITY_OF_WATER * fluid_velocity**2 * fitting_num
+    ) / 2000
+
+    return round(lost_pressure, 3)
+
+
+def reynolds_number(hydraulic_diameter, fluid_velocity):
+    """
+    calculates and returns the pressure lose from a fittings on a pipe
+    in kilopascals,
+
+    Paramiters:
+    (int|float) hydraulic diameter of a pipe in meters. For a round
+                        pipe, the hydraulic diameter is the same
+                        as the pipe's inner diameter.
+    (int|float) velocity of the water flowing through the pipe in
+                        meters / second
+
+    returns:
+    (flaot) the Reynolds number
+    """
+    # μ is the dynamic viscosity of water (0.0010016 Pascal seconds)
+    water_dynamic_viscosity = 0.0010016
+
+    reynolds_number = (
+        DENSITY_OF_WATER * hydraulic_diameter * fluid_velocity
+    ) / water_dynamic_viscosity
+
+    return round(reynolds_number)
+
+
+def pressure_loss_from_pipe_reduction(
+    larger_diameter, fluid_velocity, reynolds_number, smaller_diameter
+):
+    """
+    calculates and returns the pressure lose from a fittings on a pipe
+    in kilopascals,
+
+    Paramiters:
+    (int|float) Reynolds number that corresponds to the pipe with
+                        the larger diameter
+    (int|float) diameter of the larger pipe in meters
+    (int|float) diameter of the smaller pipe in meters
+    (int|float) velocity of the water flowing through the larger
+                        diameter pipe in meters / second
+
+    returns:
+    (flaot) the lost pressure kilopascals
+    """
+
+    # k is a constant computed by the first formula and used in the second formula
+    constant = (0.1 + (50 / reynolds_number)) * (
+        (larger_diameter / smaller_diameter) ** 4 - 1
+    )
+
+    # round to the ones 1
+    constant = round(constant, 3)
+
+    # the lost pressure kilopascals
+    lost_pressure = ((-constant) * DENSITY_OF_WATER * fluid_velocity**2) / 2000
 
     # P is the lost pressure in kilopascals
     lost_pressure = ((-0.04) * water_density * fluid_velocity**2 * fitting_num) / 2000
