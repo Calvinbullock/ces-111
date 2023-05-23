@@ -1,4 +1,5 @@
 def scoreing_q_1_to_7(score):
+    # Takes letter grade and changes it to number
     match score:
         case "D":
             return 0
@@ -11,6 +12,7 @@ def scoreing_q_1_to_7(score):
 
 
 def scoreing_q_8_to_10(score):
+    # Takes letter grade and changes it to number
     match score:
         case "D":
             return -3
