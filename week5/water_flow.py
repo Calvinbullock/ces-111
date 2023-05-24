@@ -85,7 +85,7 @@ def pressure_loss_from_fittings(fluid_velocity, fitting_num):
 
     # P is the lost pressure in kilopascals
     lost_pressure = (
-        (-0.04) * DENSITY_OF_WATER * fluid_velocity**2 * fitting_num
+        -0.04 * DENSITY_OF_WATER * (fluid_velocity ** 2) * fitting_num
     ) / 2000
 
     return lost_pressure
@@ -139,9 +139,6 @@ def pressure_loss_from_pipe_reduction(
     constant = (0.1 + (50 / reynolds_number)) * (
         (larger_diameter / smaller_diameter) ** 4 - 1
     )
-
-    # round to the ones 1
-    constant = constant
 
     # the lost pressure kilopascals
     lost_pressure = ((-constant) * DENSITY_OF_WATER * fluid_velocity**2) / 2000
