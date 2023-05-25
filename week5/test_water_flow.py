@@ -65,9 +65,9 @@ def test_pressure_loss_from_fittings():
     """
     assert pressure_loss_from_fittings(0, 3) == approx(0, 0.001)
     assert pressure_loss_from_fittings(1.65, 0) == approx(0, 0.001)
-    assert pressure_loss_from_fittings(1.65, 2) == approx(-0.109, 0.003) # brooken
-    assert pressure_loss_from_fittings(1.75, 2) == approx(-0.122, 0.003) # brooken
-    assert pressure_loss_from_fittings(1.75, 5) == approx(-0.306, 0.003) # brooken
+    assert pressure_loss_from_fittings(1.65, 2) == approx(-0.109, 0.003) # brooken with out the .003
+    assert pressure_loss_from_fittings(1.75, 2) == approx(-0.122, 0.003) # brooken with out the .003
+    assert pressure_loss_from_fittings(1.75, 5) == approx(-0.306, 0.003) # brooken with out the .003
 
 
 def test_reynolds_number():
