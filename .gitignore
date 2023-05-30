@@ -6,3 +6,6 @@ week5/__pycache__
 week7/__pycache__/test_chemistry_1.cpython-311-pytest-7.2.1.pyc
 .gitignore
 week7/__pycache__/chemistry.cpython-311.pyc
+week7/__pycache__/test_random_numbers.cpython-311-pytest-7.2.1.pyc
+.gitignore
+week7/__pycache__/random_numbers.cpython-311.pyc
