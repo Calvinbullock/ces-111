@@ -3,3 +3,6 @@ week2/volumes.txt
 week5/venv
 week5/.pytest_cache
 week5/__pycache__
+week7/__pycache__/test_chemistry_1.cpython-311-pytest-7.2.1.pyc
+.gitignore
+week7/__pycache__/chemistry.cpython-311.pyc
