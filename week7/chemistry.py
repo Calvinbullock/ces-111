@@ -10,7 +10,7 @@ def main():
     chemical_formul = input("Enter the chemical formula for a molecule: ")
 
     # Get the mass of a chemical sample in grams from the user.
-    chemical_mass = input("ENter the mass of a chemical sample in grams: ")
+    chemical_mass = input("Enter the mass of a chemical sample in grams: ")
 
     # Call the make_periodic_table function and store the returned
     # list in a variable.
