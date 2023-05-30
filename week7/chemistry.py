@@ -19,8 +19,7 @@ def main():
     # Print the name and atomic mass for each chemical element on a
     # separate line. Do not print the chemical element symbols.
     for element in periodic_table_list:
-        print(f"Name: {periodic_table_list[1]}")
-        print(f"Mass: {periodic_table_list[2]}")
+        print(f"{element[1]} {element[2]}")
 
 
 def make_periodic_table():
