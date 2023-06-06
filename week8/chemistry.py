@@ -25,9 +25,15 @@ def main():
     # chemical_mass = input("Enter the mass of a chemical sample in grams: ")
     # chemical_mass = float(chemical_mass)
 
-    # Quick Test case
-    chemical_formula = "C6H12O6"
-    chemical_mass = 12.37
+    # Quick Test case 1
+    # chemical_formula = "C6H12O6"
+    # chemical_mass = 12.37
+    
+    # Quick Test case 2
+    chemical_formula = "C6H6"
+    chemical_mass = 25.04
+
+
 
     # Call the make_periodic_table function and store the returned
     # list in a variable.
