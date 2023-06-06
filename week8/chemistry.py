@@ -15,6 +15,8 @@ QUANTITY_INDEX = 1
 def main():
     """
     Prompts the user for a chemical formula and a chemical sample
+
+    then computes and prints the molar mass and moles of the chemical.
     """
 
     # # Get a chemical formula for a molecule from the user.
@@ -43,7 +45,7 @@ def main():
     molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table_dict)
     
     # Compute the number of moles in the sample.
-    moles = 12.37/molar_mass
+    moles = chemical_mass/molar_mass
 
     # Print the molar mass.
     print(molar_mass)
