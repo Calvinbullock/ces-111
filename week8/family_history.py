@@ -43,7 +43,7 @@ def main():
         "P152": ["Jose Castillo", "M", 1884, 1931],
         "P205": ["Liam Myers", "M", 1902, 1950],
         "P465": ["Isabella Lopez", "F", 1907, 1959],
-        "P168": ["Megan Anderson", "F", 1909, 1945]
+        "P168": ["Megan Anderson", "F", 1909, 1945],
     }
 
     marriages_dict = {
@@ -68,7 +68,7 @@ def main():
         "M50": ["P152", "P425", 1917],
         "M64": ["P205", "P465", 1925],
         "M62": ["P152", "P207", 1925],
-        "M70": ["P152", "P168", 1928]
+        "M70": ["P152", "P168", 1928],
     }
 
     # Call the print_death_age function to print
@@ -134,9 +134,8 @@ def count_genders(people_dict):
             f_count += 1
         else:
             m_count += 1
-    
-    print(f"males: {m_count} females: {f_count}")
 
+    print(f"males: {m_count} females: {f_count}")
 
 
 def print_marriages(marriages_dict, people_dict):
@@ -160,24 +159,25 @@ def print_marriages(marriages_dict, people_dict):
         husband_id = marriage[0]
         wife_id = marriage[1]
         wedding_year = marriage[2]
-        
+
         # find wife and husband info
         wife = people_dict[wife_id]
         husband = people_dict[husband_id]
-        
+
         # parse husband info
         husband_name = husband[0]
         husband_birth_year = husband[2]
-        
         husband_wedding_age = wedding_year - husband_birth_year
 
         # parse wife info
         wife_name = wife[0]
         wife_birth_year = wife[2]
-
         wife_wedding_age = wedding_year - wife_birth_year
 
-        print(f"Husband: {husband_name}, {husband_wedding_age} Wife: {wife_name}, {wife_wedding_age} year: {wedding_year}")
+        print(
+            f"Husband: {husband_name}, {husband_wedding_age} Wife: {wife_name}, {wife_wedding_age} year: {wedding_year}"
+        )
+
 
 # If this file was executed like this:
 # > python teach_solution.py
