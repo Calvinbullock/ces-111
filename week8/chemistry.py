@@ -56,7 +56,7 @@ def main():
     print(molar_mass)
 
     # Print the number of moles.
-    print(moles)
+    print(f"{moles:5f}")
 
 
 def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
