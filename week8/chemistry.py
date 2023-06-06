@@ -46,8 +46,8 @@ def main():
 
     # Call the compute_molar_mass function to compute the
     # molar mass of the molecule from the compound list.
-    total_mass = compute_molar_mass(symbol_quantity_list, periodic_table_dict)
-    # print(f"total mass: {total_mass}") #DEBUG
+    molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table_dict)
+    print(f"corect?: {molar_mass == 180.15588}") #DEBUG
     
     # Compute the number of moles in the sample.
 
@@ -80,7 +80,7 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
     # compound symbol_quantity_list:
     # Separate the inner list into symbol and quantity.
     # Get the atomic mass for the symbol from the dictionary.
-    total_atomic_mass = 1
+    molar_mass = 0
 
     for iner_list in symbol_quantity_list:
         # Parses the data from symbol_quantity_list
@@ -91,13 +91,13 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
         atomic_mass = elementel_attributes_list[1]
         
         # Multiply the atomic mass by the quantity.
-        # ???? this is the seconed num in symbol_quantity_list
         qty_x_mass = atomic_mass * element_qty
 
-    # Add the product into the total molar mass.
+        # Add the product into the total molar mass.
+        molar_mass += qty_x_mass
 
     # Return the total molar mass.
-    return atomic_mass
+    return molar_mass
 
 
 def make_periodic_table():
