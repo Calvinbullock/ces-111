@@ -2,7 +2,6 @@
 
 from formula import parse_formula
 
-
 # Indexes for inner lists in the periodic table
 NAME_INDEX = 0
 ATOMIC_MASS_INDEX = 1
@@ -27,9 +26,9 @@ def main():
     # chemical_mass = float(chemical_mass)
 
     # Quick Test case
-    chemical_formula = "C6H12O6" 
+    chemical_formula = "C6H12O6"
     chemical_mass = 12.37
-    
+
     # Call the make_periodic_table function and store the returned
     # list in a variable.
     periodic_table_dict = make_periodic_table()
@@ -43,15 +42,16 @@ def main():
     # Call the compute_molar_mass function to compute the
     # molar mass of the molecule from the compound list.
     molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table_dict)
-    
+
     # Compute the number of moles in the sample.
-    moles = chemical_mass/molar_mass
+    moles = chemical_mass / molar_mass
 
     # Print the molar mass.
     print(molar_mass)
 
     # Print the number of moles.
     print(moles)
+
 
 def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
     """Compute and return the total molar mass of all the
@@ -81,12 +81,12 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
 
     for iner_list in symbol_quantity_list:
         # Parses the data from symbol_quantity_list
-        # to get the proper mass from periodic_table_dict 
+        # to get the proper mass from periodic_table_dict
         element_Symbol = iner_list[0]
         element_qty = iner_list[1]
         elementel_attributes_list = periodic_table_dict[element_Symbol]
         atomic_mass = elementel_attributes_list[1]
-        
+
         # Multiply the atomic mass by the quantity.
         qty_x_mass = atomic_mass * element_qty
 
