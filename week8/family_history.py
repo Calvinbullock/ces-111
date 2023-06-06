@@ -100,7 +100,18 @@ def print_death_age(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    # loops trought people_dict
+    for people_id in people_dict:
+        person = people_dict[people_id]
+
+        name = person[0]
+
+        # uses the birth and death year to calculate age
+        birth_year = person[2]
+        death_year = person[3]
+        death_age = int(death_year) - int(birth_year)
+
+        print(f"{name} died at {death_age} years old.")
 
 
 def count_genders(people_dict):
@@ -113,7 +124,19 @@ def count_genders(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    m_count = 0
+    f_count = 0
+
+    for people_id in people_dict:
+        person = people_dict[people_id]
+
+        if person[1] == "F":
+            f_count += 1
+        else:
+            m_count += 1
+    
+    print(f"males: {m_count} females: {f_count}")
+
 
 
 def print_marriages(marriages_dict, people_dict):
@@ -130,8 +153,31 @@ def print_marriages(marriages_dict, people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    for marriage_id in marriages_dict:
+        marriage = marriages_dict[marriage_id]
 
+        # find wife and husband ID
+        husband_id = marriage[0]
+        wife_id = marriage[1]
+        wedding_year = marriage[2]
+        
+        # find wife and husband info
+        wife = people_dict[wife_id]
+        husband = people_dict[husband_id]
+        
+        # parse husband info
+        husband_name = husband[0]
+        husband_birth_year = husband[2]
+        
+        husband_wedding_age = wedding_year - husband_birth_year
+
+        # parse wife info
+        wife_name = wife[0]
+        wife_birth_year = wife[2]
+
+        wife_wedding_age = wedding_year - wife_birth_year
+
+        print(f"Husband: {husband_name}, {husband_wedding_age} Wife: {wife_name}, {wife_wedding_age} year: {wedding_year}")
 
 # If this file was executed like this:
 # > python teach_solution.py
