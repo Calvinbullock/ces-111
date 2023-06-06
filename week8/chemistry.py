@@ -32,29 +32,24 @@ def main():
     # list in a variable.
     periodic_table_dict = make_periodic_table()
 
-    # # Print the name and atomic mass for each chemical element on a
-    # # separate line. Do not print the chemical element symbols.
-    # for element in periodic_table_dict:
-    #     print(f"{element[1]} {element[2]}")
-
     # Call the parse_formula function to convert the
     # chemical formula given by the user to a compound
     # list that stores element symbols and the quantity
     # of atoms of each element in the molecule.
     symbol_quantity_list = parse_formula(chemical_formula, periodic_table_dict)
-    # print(symbol_quantity_list) #DEBUG
 
     # Call the compute_molar_mass function to compute the
     # molar mass of the molecule from the compound list.
     molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table_dict)
-    print(f"corect?: {molar_mass == 180.15588}") #DEBUG
     
     # Compute the number of moles in the sample.
+    moles = 12.37/molar_mass
 
     # Print the molar mass.
+    print(molar_mass)
 
     # Print the number of moles.
-
+    print(moles)
 
 def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
     """Compute and return the total molar mass of all the
