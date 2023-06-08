@@ -22,11 +22,10 @@ def main():
     chemical_formula = input("Enter the chemical formula for a molecule: ")
 
     # Get the mass of a chemical sample in grams from the user.
-    chemical_mass = input("Enter the mass of a chemical sample in grams: ")
-    chemical_mass = float(chemical_mass)
+    chemical_mass = float(input("Enter the mass of a chemical sample in grams: "))
 
     # --------------- TEST CASE START --------------- #
-    # Quick Test case 1
+    # # Quick Test case 1
     # chemical_formula = "C6H12O6"
     # chemical_mass = 12.37
 
