@@ -18,16 +18,16 @@ def main():
     then computes and prints the molar mass and moles of the chemical.
     """
 
-    # # Get a chemical formula for a molecule from the user.
-    # chemical_formula = input("Enter the chemical formula for a molecule: ")
+    # Get a chemical formula for a molecule from the user.
+    chemical_formula = input("Enter the chemical formula for a molecule: ")
 
-    # # Get the mass of a chemical sample in grams from the user.
-    # chemical_mass = float(input("Enter the mass of a chemical sample in grams: "))
+    # Get the mass of a chemical sample in grams from the user.
+    chemical_mass = float(input("Enter the mass of a chemical sample in grams: "))
 
     # --------------- TEST CASE START --------------- #
-    # Quick Test case 1
-    chemical_formula = "C6H12O6"
-    chemical_mass = 12.37
+    # # Quick Test case 1
+    # chemical_formula = "C6H12O6"
+    # chemical_mass = 12.37
 
     # # Quick Test case 2
     # chemical_formula = "C6H6"
