@@ -18,18 +18,18 @@ def main():
     then computes and prints the molar mass and moles of the chemical.
     """
 
-    # Get a chemical formula for a molecule from the user.
-    chemical_formula = input("Enter the chemical formula for a molecule: ")
+    # # Get a chemical formula for a molecule from the user.
+    # chemical_formula = input("Enter the chemical formula for a molecule: ")
 
-    # Get the mass of a chemical sample in grams from the user.
-    chemical_mass = float(input("Enter the mass of a chemical sample in grams: "))
+    # # Get the mass of a chemical sample in grams from the user.
+    # chemical_mass = float(input("Enter the mass of a chemical sample in grams: "))
 
     # --------------- TEST CASE START --------------- #
-    # # Quick Test case 1
-    # chemical_formula = "C6H12O6"
-    # chemical_mass = 12.37
+    # Quick Test case 1
+    chemical_formula = "C6H12O6"
+    chemical_mass = 12.37
 
-    # Quick Test case 2
+    # # Quick Test case 2
     # chemical_formula = "C6H6"
     # chemical_mass = 25.04
     # --------------- TEST CASE END --------------- #
@@ -87,10 +87,10 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
     for iner_list in symbol_quantity_list:
         # Parses the data from symbol_quantity_list
         # to get the proper mass from periodic_table_dict
-        element_Symbol = iner_list[0]
-        element_qty = iner_list[1]
+        element_Symbol = iner_list[SYMBOL_INDEX]
+        element_qty = iner_list[QUANTITY_INDEX]
         elementel_attributes_list = periodic_table_dict[element_Symbol]
-        atomic_mass = elementel_attributes_list[1]
+        atomic_mass = elementel_attributes_list[ATOMIC_MASS_INDEX]
 
         # Multiply the atomic mass by the quantity.
         qty_x_mass = atomic_mass * element_qty
