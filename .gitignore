@@ -13,3 +13,6 @@ week8/__pycache__/formula.cpython-311.pyc
 week8/__pycache__/chemistry.cpython-311.pyc
 .gitignore
 week8/__pycache__/test_chemistry_2.cpython-311-pytest-7.2.1.pyc
+week9/__pycache__/receipt.cpython-311.pyc
+.gitignore
+week9/__pycache__/test_products.cpython-311-pytest-7.2.1.pyc
