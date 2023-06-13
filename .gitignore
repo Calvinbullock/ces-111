@@ -16,3 +16,5 @@ week8/__pycache__/test_chemistry_2.cpython-311-pytest-7.2.1.pyc
 week9/__pycache__/receipt.cpython-311.pyc
 .gitignore
 week9/__pycache__/test_products.cpython-311-pytest-7.2.1.pyc
+week9/__pycache__/students.cpython-311.pyc
+week9/__pycache__/test_students.cpython-311-pytest-7.2.1.pyc
