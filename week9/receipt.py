@@ -2,9 +2,7 @@
 # Milestone 9
 
 
-# Found this here
-# https://stackoverflow.com/questions/10079216/skip-first-entry-in-for-loop-in-python
-from itertools import islice
+import csv
 
 
 def main():
@@ -31,14 +29,16 @@ def read_dictionary(filename, key_column_index=0):
 
     # Reads the lines of the file into an array
     products_dict = {}
-    with open(filename) as file:
-        # loops trought the file but skips the first line
-        for line in islice(file, 1, None):
-            # Splits the file lines into an array
-            line = line.strip()
-            array = line.split(",")
 
-            products_dict[array[key_column_index]] = array
+    with open(filename, "rt") as file:
+        # uses the csv reader to clean up csv data
+        reader = csv.reader(file)
+        # saves then skips the csv header
+        header = next(reader, None)
+
+        # saves each line to a dictinary pair
+        for row_list in reader:
+            products_dict[row_list[key_column_index]] = row_list
 
     # Closes file.
     file.close()

@@ -1,9 +1,7 @@
 # Calvin Bullock, June 13th
 # Team 9
 
-# Found this here
-# https://stackoverflow.com/questions/10079216/skip-first-entry-in-for-loop-in-python
-from itertools import islice
+import csv
 
 
 def main():
@@ -11,8 +9,8 @@ def main():
     # byu_i_num = input("Please enter an I-Number (xxxxxxxxx): ")
 
     # # Testing I-nums
-    byu_i_num = "551234151"
-    # byu_i_num = "751766201"
+    # byu_i_num = "551234151"
+    byu_i_num = "751766201"
 
     # Open and read file
     filename = "students.csv"
@@ -36,21 +34,18 @@ def read_dictionary(filename, key_column_index):
     Return: a compound dictionary that contains
         the contents of the CSV file.
     """
-    # Checks if file exsists
-    try:
-        # Reads the lines of the file into an array
-        products_dict = {}
-        with open(filename) as file:
+    products_dict = {}
 
-            # loops trought the file but skips the first line
-            for line in islice(file, 1, None):
-                # Splits the file lines into an array
-                line = line.strip()
-                array = line.split(",")
+    # Reads the lines of the file into an array
+    with open(filename) as file:
+        # uses the csv reader to clean up csv data
+        reader = csv.reader(file)
+        # saves then skips the csv header
+        header = next(reader, None)
 
-                products_dict[array[key_column_index]] = array
-    except:
-        print("Could not find the file, please check the file and try again ")
+        # saves each line to a dictinary pair
+        for row_list in reader:
+            products_dict[row_list[key_column_index]] = row_list
 
     # Closes file.
     file.close()
