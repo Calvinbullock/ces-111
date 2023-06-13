@@ -1,4 +1,4 @@
-# Calvin Bullock
+# Calvin Bullock, June 13th
 
 
 # Found this here
@@ -7,13 +7,16 @@ from itertools import islice
 
 
 def main():
-    filename = "request.csv"
-    # filename = "products.csv"
+    # Test file names
+    # Filename = "request.csv"
+    filename = "products.csv"
+
+    # Read the file and return the dictinary
     products_dict = read_dictionary(filename, 0)
     print(products_dict)
 
 
-def read_dictionary(filename, key_column_index):
+def read_dictionary(filename, key_column_index=0):
     """Read the contents of a CSV file into a compound
     dictionary and return the dictionary.
 
@@ -25,28 +28,22 @@ def read_dictionary(filename, key_column_index):
         the contents of the CSV file.
     """
 
-    # Opens a file and returns an array from it
-    try:
-        pass
-    except:
-        print("Could not find the file, please check the file and try again ")
+    # Reads the lines of the file into an array
+    products_dict = {}
+    with open(filename) as file:
+        # loops trought the file but skips the first line
+        for line in islice(file, 1, None):
+            # Splits the file lines into an array
+            line = line.strip()
+            array = line.split(",")
 
-    if True:
-        # Reads the lines of the file into an array
-        products_dict = {}
-        with open(filename) as file:
-            for line in islice(file, 1, None):  # broken....
-                line = line.strip()
-                array = line.split(",")
-                # print(array)
+            products_dict[array[key_column_index]] = array
 
-                products_dict[array[key_column_index]] = array
+    # Closes file.
+    file.close()
 
-        # Closes file.
-        file.close()
-        
-        return products_dict
+    return products_dict
 
 
-
-main()
+if __name__ == "__main__":
+    main()
