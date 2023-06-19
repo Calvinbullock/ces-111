@@ -140,3 +140,26 @@ def list_user_order(products_dict, request_list):
 
 if __name__ == "__main__":
     main()
+
+
+# TODO this program needs to do:
+# Include a try block and except blocks to handle FileNotFoundError, PermissionError, and KeyError.
+# Add main function description
+
+
+# EXSPECTED OUTPUT
+# Inkom Emporium
+
+# wheat bread: 2 @ 2.55
+# 1 cup yogurt: 4 @ 0.75
+# 32 oz granola: 1 @ 3.21
+# twix candy bar: 2 @ 0.85
+# 1 cup yogurt: 3 @ 0.75
+
+# Number of Items: 12
+# Subtotal: 15.26
+# Sales Tax: 0.92
+# Total: 16.18
+
+# Thank you for shopping at the Inkom Emporium.
+# Wed Nov  4 05:10:30 2020
