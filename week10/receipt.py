@@ -10,6 +10,8 @@ from datetime import datetime
 # the computer's operating system.
 current_date_and_time = datetime.now()
 
+TAX_RATE = .06
+
 def main():
     # Test file names
     # Filename = "request.csv"
