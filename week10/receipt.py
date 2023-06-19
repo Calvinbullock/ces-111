@@ -24,9 +24,6 @@ def main():
     # Call the
     list_user_order(products_dict, request_list)
 
-    print("Thank you for shopping at the Inkom Emporium.")
-    print(f"{current_date_and_time:%A %I:%M %p}")
-
 
 def read_list(filename):
     """Read the contents of a CSV file into a two dimentinal array.
