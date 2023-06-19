@@ -135,6 +135,7 @@ def list_user_order(products_dict, request_list):
 
     print()
     print("Thank you for shopping at the Inkom Emporium.")
+    print(f"{current_date_and_time:%c}")
 
 
 if __name__ == "__main__":
