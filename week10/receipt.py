@@ -3,7 +3,12 @@
 
 
 import csv
+from datetime import datetime
 
+# Call the now() method to get the current
+# date and time as a datetime object from
+# the computer's operating system.
+current_date_and_time = datetime.now()
 
 def main():
     # Test file names
