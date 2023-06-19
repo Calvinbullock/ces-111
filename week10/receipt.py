@@ -102,11 +102,15 @@ def list_user_order(products_dict, request_list):
                 order info.
 
     """
+    # Instilize for multi loop scope
     total_items = 0
     subtotal = 0
-    sales_tax = 0
-    total_cost = 0
 
+    # Start the recipte printing
+    print("Inkom Emporium")
+    print()
+
+    # Parses and prints the orderd products info
     for item_info in request_list:
         product_key = item_info[0]
         order_info_list = item_info
@@ -122,13 +126,15 @@ def list_user_order(products_dict, request_list):
 
     sales_tax = subtotal * TAX_RATE
     total_cost = sales_tax + subtotal
-    
+
     print()
-    print(f"Number of Items: {total_items}")  # 12
-    print(f"Subtotal: {subtotal :.2f}")  # 15.26
-    print(f"Sales Tax: {sales_tax :.2f}")  # 0.92
-    print(f"Total: {total_cost :.2f}")  # 16.18
+    print(f"Number of Items: {total_items}")
+    print(f"Subtotal: {subtotal :.2f}")
+    print(f"Sales Tax: {sales_tax :.2f}")
+    print(f"Total: {total_cost :.2f}")
+
     print()
+    print("Thank you for shopping at the Inkom Emporium.")
 
 
 if __name__ == "__main__":
