@@ -90,5 +90,18 @@ def read_dictionary(filename, key_column_index=0):
     return products_dict
 
 
+def list_user_order(products_dict, request_list):
+    """
+    This function uses a dictinary of products in the store
+    and a two dimentinal array of a users order to parse the users
+    order into the store data base and pull out the product info then
+    print the order's receipt.
+
+    Parameters
+            products_dict: A dictinary with the stores product info.
+            request_list: a two dementinal array that stores the users
+                order info.
+
+    """
 if __name__ == "__main__":
     main()
