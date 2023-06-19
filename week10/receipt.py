@@ -18,17 +18,18 @@ def main():
     filename = "products.csv"
 
     # Read the file and return the dictinary
-    products_dict = read_dictionary(filename, 0)
-    print(products_dict)
+    products_dict = read_dictionary("products.csv", 0)
+    request_list = read_list("request.csv")
 
+    # Start the recipte printing 
+    print("Inkom Emporium")
+    print()
 
-    # Inkom Emporium
+    # Call the 
+    list_user_order(products_dict, request_list)
 
-    = input("wheat bread: ") #2 @ 2.55
-    = input("1 cup yogurt: ") #4 @ 0.75
-    = input("32 oz granola: ") #1 @ 3.21
-    = input("twix candy bar: ") #2 @ 0.85
-    = input("1 cup yogurt: ") #3 @ 0.75
+    print("Thank you for shopping at the Inkom Emporium.")
+    print(f"{current_date_and_time:%A %I:%M %p}")
 
 
 def read_list(filename):
