@@ -1,29 +1,37 @@
 # Calvin Bullock, June 13th
-# Team 9
+# Milestone 9
+
 
 import csv
 
 
 def main():
-    # # Collect I number from user
-    # byu_i_num = input("Please enter an I-Number (xxxxxxxxx): ")
+    # Test file names
+    # Filename = "request.csv"
+    filename = "products.csv"
 
-    # # Testing I-nums
-    # byu_i_num = "551234151"
-    byu_i_num = "751766201"
-
-    # Open and read file
-    filename = "students.csv"
-    student_dict = read_dictionary(filename, 0)
-
-    # Check if the students number is in the dictinary
-    if byu_i_num in student_dict:
-        print(student_dict[byu_i_num][1])
-    else:
-        print("No such student.")
+    # Read the file and return the dictinary
+    products_dict = read_dictionary(filename, 0)
+    print(products_dict)
 
 
-def read_dictionary(filename, key_column_index):
+    # Inkom Emporium
+
+    = input("wheat bread: ") #2 @ 2.55
+    = input("1 cup yogurt: ") #4 @ 0.75
+    = input("32 oz granola: ") #1 @ 3.21
+    = input("twix candy bar: ") #2 @ 0.85
+    = input("1 cup yogurt: ") #3 @ 0.75
+
+    = input("Number of Items: ") #12
+    = input("Subtotal: ") #15.26
+    = input("Sales Tax: ") #0.92
+    = input("Total: ") #16.18
+
+    print("Thank you for shopping at the")
+
+
+def read_dictionary(filename, key_column_index=0):
     """Read the contents of a CSV file into a compound
     dictionary and return the dictionary.
 
@@ -34,10 +42,11 @@ def read_dictionary(filename, key_column_index):
     Return: a compound dictionary that contains
         the contents of the CSV file.
     """
-    products_dict = {}
 
     # Reads the lines of the file into an array
-    with open(filename) as file:
+    products_dict = {}
+
+    with open(filename, "rt") as file:
         # uses the csv reader to clean up csv data
         reader = csv.reader(file)
         # saves then skips the csv header
@@ -45,8 +54,7 @@ def read_dictionary(filename, key_column_index):
 
         # saves each line to a dictinary pair
         for row_list in reader:
-            key = row_list[key_column_index]
-            products_dict[key] = row_list
+            products_dict[row_list[key_column_index]] = row_list
 
     # Closes file.
     file.close()
