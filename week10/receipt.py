@@ -10,22 +10,18 @@ from datetime import datetime
 # the computer's operating system.
 current_date_and_time = datetime.now()
 
-TAX_RATE = .06
+TAX_RATE = 0.06
+
 
 def main():
-    # Test file names
-    # Filename = "request.csv"
-    filename = "products.csv"
-
+    """
+    MORE NEEDED HERe TODO
+    """
     # Read the file and return the dictinary
     products_dict = read_dictionary("products.csv", 0)
     request_list = read_list("request.csv")
 
-    # Start the recipte printing 
-    print("Inkom Emporium")
-    print()
-
-    # Call the 
+    # Call the
     list_user_order(products_dict, request_list)
 
     print("Thank you for shopping at the Inkom Emporium.")
