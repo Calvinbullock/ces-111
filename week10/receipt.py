@@ -23,12 +23,35 @@ def main():
     = input("twix candy bar: ") #2 @ 0.85
     = input("1 cup yogurt: ") #3 @ 0.75
 
-    = input("Number of Items: ") #12
-    = input("Subtotal: ") #15.26
-    = input("Sales Tax: ") #0.92
-    = input("Total: ") #16.18
 
-    print("Thank you for shopping at the")
+def read_list(filename):
+    """Read the contents of a CSV file into a two dimentinal array.
+
+    Parameters
+        filename: the name of the CSV file to read.
+    Return: a two dementinal array that contains
+        the contents of the CSV file.
+
+    """
+    # Reads the lines of the file into an array
+    products_list = []
+
+    with open(filename, "rt") as file:
+        # uses the csv reader to clean up csv data
+        reader = csv.reader(file)
+        # saves then skips the csv header
+        header = next(reader, None)
+
+        index = 0
+        # saves each line to a dictinary pair
+        for row_list in reader:
+            products_list.append(row_list)
+            index += 1
+
+    # Closes file.
+    file.close()
+
+    return products_list
 
 
 def read_dictionary(filename, key_column_index=0):
