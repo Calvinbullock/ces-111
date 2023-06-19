@@ -103,5 +103,34 @@ def list_user_order(products_dict, request_list):
                 order info.
 
     """
+    total_items = 0
+    subtotal = 0
+    sales_tax = 0
+    total_cost = 0
+
+    for item_info in request_list:
+        product_key = item_info[0]
+        order_info_list = item_info
+        product_info_list = products_dict[product_key]
+        product_qty = int(order_info_list[1])
+        product_name = product_info_list[1]
+        product_price = float(product_info_list[2])
+
+        print(f"{product_name}: {product_qty} @ {product_price}")
+
+        total_items += product_qty
+        subtotal += product_qty * product_price
+
+    sales_tax = subtotal * TAX_RATE
+    total_cost = sales_tax + subtotal
+    
+    print()
+    print(f"Number of Items: {total_items}")  # 12
+    print(f"Subtotal: {subtotal :.2f}")  # 15.26
+    print(f"Sales Tax: {sales_tax :.2f}")  # 0.92
+    print(f"Total: {total_cost :.2f}")  # 16.18
+    print()
+
+
 if __name__ == "__main__":
     main()
