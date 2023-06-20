@@ -15,7 +15,10 @@ TAX_RATE = 0.06
 
 def main():
     """
-    MORE NEEDED HERe TODO
+    This program will take two csv files one that has an order and the other 
+    that has products and their info.
+    the program will then take the order and print a receipt of the order
+    based on the products data.
     """
     # Read the file and return the dictinary
     products_dict = read_dictionary("products.csv", 0)
