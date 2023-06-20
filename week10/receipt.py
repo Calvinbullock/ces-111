@@ -1,7 +1,7 @@
 # Calvin Bullock, June 13th
 # Prove 10
 
-
+import sys
 import csv
 from datetime import datetime
 
@@ -123,22 +123,29 @@ def list_user_order(products_dict, request_list):
     print("Inkom Emporium")
     print()
 
-    # Parses and prints the orderd products info
-    for item_info in request_list:
-        product_key = item_info[0]
-        order_info_list = item_info
-        product_info_list = products_dict[product_key]
-        product_qty = int(order_info_list[1])
-        product_name = product_info_list[1]
-        product_price = float(product_info_list[2])
+    try:
 
-        print(f"{product_name}: {product_qty} @ {product_price}")
+        # Parses and prints the orderd products info
+        for item_info in request_list:
+            product_key = item_info[0]
+            order_info_list = item_info
+            product_info_list = products_dict[product_key]
+            product_qty = int(order_info_list[1])
+            product_name = product_info_list[1]
+            product_price = float(product_info_list[2])
 
-        total_items += product_qty
-        subtotal += product_qty * product_price
+            print(f"{product_name}: {product_qty} @ {product_price}")
 
-    sales_tax = subtotal * TAX_RATE
-    total_cost = sales_tax + subtotal
+            total_items += product_qty
+            subtotal += product_qty * product_price
+
+        sales_tax = subtotal * TAX_RATE
+        total_cost = sales_tax + subtotal
+    
+    except KeyError:
+        print()
+        print(f"Invalid key in products_dict: {product_key}")
+        sys.exit()
 
     print()
     print(f"Number of Items: {total_items}")
