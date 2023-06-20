@@ -3,6 +3,7 @@
 # Import the csv module so that it can be used
 # to read from the accidents.csv file.
 import csv
+import sys
 
 
 # Column numbers from the accidents.csv file.
@@ -20,42 +21,67 @@ FATIGUE_COLUMN = 9
 
 def main():
     # Prompt the user for a filename and open that text file.
-    filename = input("Name of file that contains NHTSA data: ")
-    with open(filename, "rt") as text_file:
+    # filename = input("Name of file that contains NHTSA data: ")
+    filename = "accidents.csv"
+    try:
+        with open(filename, "rt") as text_file:
 
-        # Prompt the user for a percentage.
-        perc_reduc = float(input(
-            "Percent reduction of texting while driving [0, 100]: "))
+            try:
+                # Prompt the user for a percentage.
+                perc_reduc = float(input(
+                    "Percent reduction of texting while driving [0, 100]: "))
+                
+                if perc_reduc > 0:
+                    print(f"The number you input is to big {perc_reduc}")
+                    sys.exit()
 
-        print()
-        print(f"With a {perc_reduc}% reduction in using a cell",
-            "phone while driving, approximately the",
-            "following number of injuries and deaths",
-            "would have been prevented in the USA.", sep="\n")
-        print()
-        print("Year, Injuries, Deaths")
+                elif perc_reduc < 100:
+                    print(f"The number you input is to small {perc_reduc}")
+                    sys.exit()
+                
+            except ValueError:
+                print(f"You did not enter a number: {perc_reduc}")
+                sys.exit()
+            
+            print()
+            print(f"With a {perc_reduc}% reduction in using a cell",
+                "phone while driving, approximately the",
+                "following number of injuries and deaths",
+                "would have been prevented in the USA.", sep="\n")
+            print()
+            print("Year, Injuries, Deaths")
 
-        # Use the csv module to create a reader
-        # object that will read from the opened file.
-        reader = csv.reader(text_file)
+            # Use the csv module to create a reader
+            # object that will read from the opened file.
+            reader = csv.reader(text_file)
 
-        # The first line of the CSV file contains column headings
-        # and not a student's I-Number and name, so this statement
-        # skips the first line of the CSV file.
-        next(reader)
+            # The first line of the CSV file contains column headings
+            # and not a student's I-Number and name, so this statement
+            # skips the first line of the CSV file.
+            next(reader)
 
-        # Process each row in the CSV file.
-        for row in reader:
-            year = row[YEAR_COLUMN]
+            # Process each row in the CSV file.
+            for row in reader:
+                year = row[YEAR_COLUMN]
 
-            # Call the estimate_reduction function.
-            injur, fatal = estimate_reduction(
-                    row, PHONE_COLUMN, perc_reduc)
+                # Call the estimate_reduction function.
+                injur, fatal = estimate_reduction(
+                        row, PHONE_COLUMN, perc_reduc)
 
-            # Print the estimated reductions
-            # in injuries and fatalities.
-            print(year, injur, fatal, sep=", ")
-
+                # Print the estimated reductions
+                # in injuries and fatalities.
+                print(year, injur, fatal, sep=", ")
+        
+                
+    except FileNotFoundError:
+        print(f"Your file could not be found {filename}.")
+        print("Please enter a diffrent file")
+        sys.exit()
+    
+    except PermissionError:
+        print(f"You did not have permistion to accses the file {filename}.")
+        print("Please enter a diffrent file")
+        sys.exit()
 
 def estimate_reduction(row, behavior_key, perc_reduc):
     """Estimate and return the number of injuries and deaths that
