@@ -37,20 +37,27 @@ def read_list(filename):
     # Reads the lines of the file into an array
     products_list = []
 
-    with open(filename, "rt") as file:
-        # uses the csv reader to clean up csv data
-        reader = csv.reader(file)
-        # saves then skips the csv header
-        header = next(reader, None)
+    try:
+        with open(filename, "rt") as file:
+            # uses the csv reader to clean up csv data
+            reader = csv.reader(file)
+            # saves then skips the csv header
+            header = next(reader, None)
 
-        index = 0
-        # saves each line to a dictinary pair
-        for row_list in reader:
-            products_list.append(row_list)
-            index += 1
+            index = 0
+            # saves each line to a dictinary pair
+            for row_list in reader:
+                products_list.append(row_list)
+                index += 1
 
-    # Closes file.
-    file.close()
+        # Closes file.
+        file.close()
+
+    except FileNotFoundError:
+        print("Could not find file")
+
+    except PermissionError:
+        print("You do not have permisttion to acces this file.")
 
     return products_list
 
@@ -82,8 +89,12 @@ def read_dictionary(filename, key_column_index=0):
 
         # Closes file.
         file.close()
-    except:
-        print("could not find file, please check the file name and try again.")
+
+    except FileNotFoundError:
+        print("Could not find file")
+
+    except PermissionError:
+        print("You do not have permisttion to acces this file.")
 
     return products_dict
 
