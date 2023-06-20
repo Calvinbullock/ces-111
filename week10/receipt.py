@@ -1,5 +1,5 @@
 # Calvin Bullock, June 13th
-# Milestone 9
+# Prove 10
 
 
 import csv
@@ -153,7 +153,7 @@ if __name__ == "__main__":
 
 
 # TODO this program needs to do:
-# Include a try block and except blocks to handle FileNotFoundError, PermissionError, and KeyError.
+# Include a try block and except blocks to handle **FileNotFoundError, **PermissionError, and KeyError.
 # Add main function description
 
 
