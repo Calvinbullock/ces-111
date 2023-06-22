@@ -31,11 +31,11 @@ def main():
                 perc_reduc = float(input(
                     "Percent reduction of texting while driving [0, 100]: "))
                 
-                if perc_reduc > 0:
+                if perc_reduc > 100:
                     print(f"The number you input is to big {perc_reduc}")
                     sys.exit()
 
-                elif perc_reduc < 100:
+                elif perc_reduc < 0:
                     print(f"The number you input is to small {perc_reduc}")
                     sys.exit()
                 
