@@ -23,8 +23,7 @@ def main():
     # Read the file and return the dictinary
     products_dict = read_dictionary("products.csv", 0)
     request_list = read_list("request.csv")
-
-    # Call the
+    
     list_user_order(products_dict, request_list)
 
 
