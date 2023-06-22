@@ -15,7 +15,7 @@ TAX_RATE = 0.06
 
 def main():
     """
-    This program will take two csv files one that has an order and the other 
+    This program will take two csv files one that has an order and the other
     that has products and their info.
     the program will then take the order and print a receipt of the order
     based on the products data.
@@ -128,7 +128,6 @@ def list_user_order(products_dict, request_list):
     print()
 
     try:
-
         # Parses and prints the orderd products info
         for item_info in request_list:
             product_key = item_info[0]
@@ -145,7 +144,7 @@ def list_user_order(products_dict, request_list):
 
         sales_tax = subtotal * TAX_RATE
         total_cost = sales_tax + subtotal
-    
+
     except KeyError:
         print()
         print(f"Invalid key in products_dict: {product_key}")
