@@ -57,10 +57,12 @@ def read_list(filename):
         file.close()
 
     except FileNotFoundError:
-        print("Could not find file")
+        print(f"Could not find file: {filename}")
+        sys.exit()
 
     except PermissionError:
-        print("You do not have permisttion to acces this file.")
+        print(f"You do not have permisttion to acces this file: {filename}.")
+        sys.exit()
 
     return products_list
 
@@ -94,10 +96,12 @@ def read_dictionary(filename, key_column_index=0):
         file.close()
 
     except FileNotFoundError:
-        print("Could not find file")
+        print(f"Could not find file: {filename}")
+        sys.exit()
 
     except PermissionError:
-        print("You do not have permisttion to acces this file.")
+        print(f"You do not have permisttion to acces this file: {filename}.")
+        sys.exit()
 
     return products_dict
 
