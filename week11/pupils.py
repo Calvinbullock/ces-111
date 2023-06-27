@@ -10,6 +10,29 @@ SURNAME_INDEX = 1
 BIRTHDATE_INDEX = 2
 
 
+def main():
+    try:
+        filename = "pupils.csv"
+
+        compound_list = read_compound_list(filename)
+
+        # Write a lambda function that will extract the birthdate from a student.
+        birthdate = lambda list: list[0]
+
+        # Write a call to the Python built-in sorted function that will sort
+        #       the students_list by birthdate from oldest to youngest.
+        compound_list.sort(key=birthdate)
+
+        # Print the students_list by calling the print_list function
+        print_list(compound_list)
+
+    except FileNotFoundError:
+        print("Could not find the file, plseas enter adiffrent file.")
+    
+    except PermissionError:
+        print("You do not have permition to open this file.")
+
+
 def read_compound_list(filename):
     """Read the text from a CSV file into a compound list.
     The compound list will contain small lists. Each small
@@ -24,7 +47,6 @@ def read_compound_list(filename):
 
     # Open the CSV file for reading.
     with open(filename, "rt") as csv_file:
-
         # Use the csv module to create a reader
         # object that will read from the opened file.
         reader = csv.reader(csv_file)
@@ -36,8 +58,16 @@ def read_compound_list(filename):
 
         # Process each row in the CSV file.
         for row in reader:
-
             # Append the current row at the end of the compound list.
             compound_list.append(row)
 
     return compound_list
+
+
+def print_list(list):
+    for item in list:
+        print(item)
+
+
+if __name__ == "__main__":
+    main()
