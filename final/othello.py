@@ -5,7 +5,7 @@ import sys
 
 # Allows me to display errors after the clear console call
 ERROR_MSG = ""
-# Tracks whitch players turn it is 0 = W 1 = B.
+# Tracks whitch players turn it is 0 = W, 1 = B.
 TURN = 0
 
 
