@@ -22,3 +22,5 @@ week11/proposal.txt
 week11/phone_numbers.txt
 week11/__pycache__/test_add_area_code.cpython-311-pytest-7.2.1.pyc
 week11/__pycache__/add_area_code.cpython-311.pyc
+final/__pycache__/othello.cpython-311.pyc
+final/__pycache__/test_othello.cpython-311-pytest-7.2.1.pyc
