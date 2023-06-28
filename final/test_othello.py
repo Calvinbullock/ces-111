@@ -4,6 +4,9 @@ import pytest
 from othello import parse_cordnate_to_index
 from othello import parse_cords
 
+# TODO not sure if this should be in the test file but I think it
+#       will be needed so.....
+TURN = 0
 
 def test_parse_cordnate_to_index():
     """ """
