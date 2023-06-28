@@ -1,16 +1,39 @@
+import os
+import sys
+
+
 def main():
-    exit = True
+    """ """
     board_list = board_reset()
 
-    while exit:
-        # print("Enter a cordinate pair [A, 1]: ")
-        # print("Type Exit to quit:")
-        # print("Type R to reset:")
-        # print("")
-
+    # Runs until user quites program
+    while True:
+        print("Enter a cordinate pair [A, 1]: ")
+        print("Type E to quit:")
+        print("Type R to reset:")
+        print("")
         user_input = input("> ")
 
-        print_board(board_list)
+        # Clears the Console
+        os.system("cls||clear")
+
+        if user_input == "R":
+            board_list = board_reset()
+
+        elif user_input == "E":
+            print("Good Bye")
+            sys.exit()
+
+        else:
+            print(input)
+            print_board(board_list)
+
+
+def parse_move():
+    """
+    
+    """
+    pass
 
 
 def board_reset():
@@ -119,16 +142,22 @@ def board_reset():
 
 
 def print_board(list):
+    """
+    Takes the board list and prints out the formated
+        Board.
+
+    Paramites
+        String List: of the piaces places on teh board.
+    """
     for index, item in enumerate(list):
         if index % 9 == 0:
             print()
-        
-        # elif :
-        #     pass
+            print("-------------------------------------")
+            print("|", end="")
 
-        # print(f"{item}", end="")
-        print(f",{index}", end="")
+        print(f" {item} |", end="")
 
+    print()
     print()
 
 
