@@ -53,6 +53,9 @@ def main():
 
 
 def make_move(move_index, board_list):
+    """
+    TODO......... DEscription
+    """
     if TURN == 0:
         board_list[move_index] = "W"
         TURN = 1
@@ -61,7 +64,22 @@ def make_move(move_index, board_list):
         board_list[move_index] = "B"
         TURN = 0
     
-    # TODO Check if find pieces in the end of each line and set the pieces 
+    # TODO Check if find pieces in the end of each line and set the pieces
+    #   main othello rules 
+
+
+def check_if_square_ocupied(index):
+    """
+    This function will check if there is apiece already at the index given by
+            the user.
+        
+    Paramiters
+        [index: int] The index that needs to be checked
+    
+    Return
+        True or False
+    """
+    pass
 
 
 def parse_cords(cords):
