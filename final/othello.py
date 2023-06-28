@@ -3,6 +3,11 @@
 import os
 import sys
 
+# Allows me to display errors after the clear console call
+ERROR_MSG = ""
+# Tracks whitch players turn it is 0 = W 1 = B.
+TURN = 0
+
 
 def main():
     """ """
@@ -10,6 +15,7 @@ def main():
 
     # Runs until user quites program
     while True:
+        # Print menu
         print("Enter a cordinate pair [A, 1]: ")
         print("Type E to quit:")
         print("Type R to reset:")
@@ -18,42 +24,79 @@ def main():
 
         # Clears the Console
         os.system("cls||clear")
+        ERROR_MSG = ""
 
-        if user_input == "R":
+        # Parse user choice to action
+        if user_input == "R":  # Reset Board
             board_list = board_reset()
 
-        elif user_input == "E":
+        elif user_input == "E":  # Exit program
             print("Good Bye")
             sys.exit()
 
-        else:
-            print(input)
-            print_board(board_list)
+        else:  # Make move
+            try:
+                # TODO if the try catch in this func breaks this line breaks
+                #       sepretly is there a better / cleaner way to catch
+                #       this error?
+                row, col = parse_cords(user_input)
+
+            except TypeError:
+                print("ERROR: Invalid cordanates please try again.")
+                print()
+
+            else:
+                parse_cordnate_to_index(row, col)
+
+                print(ERROR_MSG)
+                print_board(board_list)
 
 
-def parse_move(cords):
+def make_move(move_index, board_list):
+    if TURN == 0:
+        board_list[move_index] = "W"
+        TURN = 1
+
+    else:
+        board_list[move_index] = "B"
+        TURN = 0
+    
+    # TODO Check if find pieces in the end of each line and set the pieces 
+
+
+def parse_cords(cords):
     """
     Takes a cordinate pair [letter, number] and translates it into
         a list index.
 
     Paramiters
-        cords:String - a string with a letter and number seperated by 
+        cords:String - a string with a letter and number seperated by
                         a comma and space
 
     Return
         a number and a letter
     """
-    cord_array = cords.split(", ")
-    row = cord_array[0]
-    col = cord_array[1]
+    cords = cords.upper()
 
-    return row, col
+    try:
+        cord_array = cords.split(", ")
+        row = cord_array[0]
+        col = int(cord_array[1])
+
+        return row, col
+
+    except IndexError:
+        pass
+        # TODO better way to catch this error?
+        # invalided corwardinets will casue an error here and another in the
+        #       main function. If I don't catch it here the program crashes,
+        #       but the error message is printed in main.
 
 
 def parse_cordnate_to_index(row, col):
     """
     This function takes the column as a number and the row as a leter then
-        parses that info into the index for the array that holds the pieace
+        parses that info into the index for the array that holds the pieces
         postions.
 
     Paramiters
@@ -64,7 +107,9 @@ def parse_cordnate_to_index(row, col):
         list index at the cordenates the user input.
 
     """
-    # Parse the lette to eqivalent number
+    assert row.upper() == row
+
+    # Parse the letter to eqivalent number
     match row:
         case "A":
             row = 0
@@ -207,7 +252,7 @@ def print_board(list):
         Board.
 
     Paramites
-        String List: of the piaces places on teh board.
+        String List: of the pieces places on the board.
     """
     for index, item in enumerate(list):
         if index % 9 == 0:
