@@ -1,4 +1,4 @@
-# Calvin Bullock Final
+# Calvin Bullock CSE-111 Final
 
 import os
 import sys
@@ -37,7 +37,8 @@ def parse_move(cords):
         a list index.
 
     Paramiters
-        cords
+        cords:String - a string with a letter and number seperated by 
+                        a comma and space
 
     Return
         a number and a letter
