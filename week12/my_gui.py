@@ -1,6 +1,12 @@
 # Calvin Bullock -- copyed then modified from heart_rate,py
 # Week 12 team
 
+# TODO READ THIS ---
+# I have not changed the comments or descriptions of most of this code.
+# Most of my changes around lines 57 - 67 & in the calculate function.
+# The rest is ripped from the oter files in this folder with little to 
+# no changes..
+
 # Copyright 2020, Brigham Young University-Idaho. All rights reserved.
 
 import tkinter as tk
