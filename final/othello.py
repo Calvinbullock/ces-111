@@ -10,7 +10,9 @@ TURN = 0
 
 
 def main():
-    """ """
+    """ 
+    TODO ....... 
+    """
     board_list = board_reset()
 
     # Runs until user quites program
@@ -54,7 +56,7 @@ def main():
 
 def make_move(move_index, board_list):
     """
-    TODO......... DEscription
+    TODO......... Description
     """
     if TURN == 0:
         board_list[move_index] = "W"
