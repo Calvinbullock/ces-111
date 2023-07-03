@@ -52,21 +52,21 @@ def populate_main_window(frm_main):
     Return: nothing
     """
     # Create a label that displays "Age:"
-    lbl_age = Label(frm_main, text="radiues of a circle (1cm - 100cm):")
+    lbl_age = Label(frm_main, text="radiues of a circle (1cm - 100cm):") # Changed
 
     # Create an integer entry box where the user will enter her age.
-    ent_age = IntEntry(frm_main, width=4, lower_bound=1, upper_bound=100)
+    ent_age = IntEntry(frm_main, width=4, lower_bound=1, upper_bound=100) # Changed
 
     # Create a label that displays "years"
-    lbl_age_units = Label(frm_main, text="cm")
+    lbl_age_units = Label(frm_main, text="cm") # Changed
 
     # Create a label that displays "Rates:"
-    lbl_rates = Label(frm_main, text="Area = ")
+    lbl_rates = Label(frm_main, text="Area = ") # Changed
 
     # Create labels that will display the results.
     lbl_slow = Label(frm_main, width=3)
     lbl_fast = Label(frm_main, width=3)
-    lbl_rate_units = Label(frm_main, text="cm sq")
+    lbl_rate_units = Label(frm_main, text="cm sq") # Changed
 
     # Create the Clear button.
     btn_clear = Button(frm_main, text="Clear")
@@ -83,6 +83,7 @@ def populate_main_window(frm_main):
 
     btn_clear.grid(row=2, column=0, padx=3, pady=3, columnspan=4, sticky="w")
 
+    # Changed this entier function, most of my changes where here.
     # This function will be called each time the user releases a key.
     def calculate(event):
         """Compute and display the user's slowest
