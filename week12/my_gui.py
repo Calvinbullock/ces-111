@@ -1,11 +1,14 @@
 # Calvin Bullock -- copyed then modified from heart_rate,py
 # Week 12 team
 
+# I have modified this code to display a GUI that calcuates the area
+# of a ciricle.
+
 # TODO READ THIS ---
 # I have not changed the comments or descriptions of most of this code.
-# Most of my changes around lines 57 - 67 & in the calculate function.
-# The rest is ripped from the oter files in this folder with little to 
-# no changes..
+# All of my changes are in populate_main_window & in the calculate functions.
+# The rest is ripped stright from the other files in this folder with 
+# little to no changes..
 
 # Copyright 2020, Brigham Young University-Idaho. All rights reserved.
 
