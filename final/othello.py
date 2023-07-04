@@ -6,12 +6,12 @@ import sys
 # Allows me to display errors after the clear console call
 ERROR_MSG = ""
 # Tracks whitch players turn it is 0 = W, 1 = B.
-TURN = 0
+TURN = 0  # TODO -- makes testing difficult might need to move to main function then pass to other functions
 
 
 def main():
-    """ 
-    TODO ....... 
+    """
+    TODO .......
     """
     board_list = board_reset()
 
@@ -56,32 +56,106 @@ def main():
 
 def make_move(move_index, board_list):
     """
-    TODO......... Description
+    This function checks whose turn it is then places the piece in the
+        user specified index.
+
+    Paramiters
+        [move_index: int] The index that the user wants to place a piece.
+        [board_list: string list] The list of pieces and there postions.
     """
-    if TURN == 0:
+    # Check if square is ocupied
+    if board_list[move_index] == "W" or board_list[move_index] == "B":
+        print("Already a piece there, try again.")
+        return 1  # error
+
+    elif TURN == 0:  # make white move
         board_list[move_index] = "W"
         TURN = 1
+        return 0
 
-    else:
+    else:  # Make black move
         board_list[move_index] = "B"
         TURN = 0
-    
-    # TODO Check if find pieces in the end of each line and set the pieces
-    #   main othello rules 
+        return 0
+
+    in_line_check()
 
 
-def check_if_square_ocupied(index):
+# TODO Move to internal func ->
+def in_line_check(turns_letter, letter_opposite, og_index, board_list):
     """
-    This function will check if there is apiece already at the index given by
-            the user.
-        
+    Checks if a piece is places next to a diffrent colour and has the
+        same colour nth places from it on the otherside of the opposite
+        colour.
+
     Paramiters
-        [index: int] The index that needs to be checked
-    
-    Return
-        True or False
+        [turns_letter: string]      The letter of the curent turns user.
+        [letter_opposite: string]   The opposite of the curent users letter.
+        [og_index: int]             The index that is being changed.
+        [board_list: string list]   The list of board postions.
+
+    Returns
+        1 == invalid move
+        0 == valid move
     """
-    pass
+    for iteration in range(0, 7):
+        index = og_index
+        direction = 0
+
+        # Directional math compass
+        #   -9
+        # -1  +1
+        #   +9
+        match direction:
+            case 0:  # south
+                index += 1
+            case 1:  # north
+                index -= 1
+            case 2:  # east
+                index += 9
+            case 3:  # west
+                index -= 9
+            case 4:  # north east
+                index -= 8
+            case 5:  # south east
+                index += 10
+            case 6:  # south west
+                index += 8
+            case 7:  # north west
+                index -= 10
+
+        # Triggers if there is at least one opposite letter after the given index
+        #       exits if out of board bounds
+        while board_list[index] == letter_opposite or index < 0 or index > 80:
+            assert index < 0 or index > 80
+
+            # TODO find a way to condense the duplicate match case in and out of
+            #       while loop pre loop needs to move to check the sq next
+            #       to the OG sq but then needs to move that same direction
+            #       in the loop.
+            match direction:
+                case 0:  # south
+                    index += 1
+                case 1:  # north
+                    index -= 1
+                case 2:  # east
+                    index += 9
+                case 3:  # west
+                    index -= 9
+                case 4:  # north east
+                    index -= 8
+                case 5:  # south east
+                    index += 10
+                case 6:  # south west
+                    index += 8
+                case 7:  # north west
+                    index -= 10
+
+            # Check if the opposite letter is at the end of the path.
+            if board_list[index] == turns_letter:
+                return 0
+
+        return 1
 
 
 def parse_cords(cords):
@@ -289,3 +363,13 @@ def print_board(list):
 
 if __name__ == "__main__":
     main()
+
+
+# TODO At least use each of these might be more
+# - testing fucns
+# - Lists
+# - Dictinaries
+# - text files
+# - exception handeling
+# - Objects
+# - lamda functions / functions in functions
