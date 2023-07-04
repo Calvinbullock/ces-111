@@ -9,14 +9,18 @@ from othello import parse_cords
 TURN = 0
 
 def test_parse_cordnate_to_index():
-    """ """
+    """
+    Checks if the letter number cords are parsed to the right indexs
+    """
     assert parse_cordnate_to_index("A", 1) == 10
     assert parse_cordnate_to_index("A", 5) == 46
     assert parse_cordnate_to_index("E", 5) == 50
 
 
 def test_parse_cords():
-    """ """
+    """
+    Checks if users input string is seperated correctly into a string and int
+    """
     row, col = parse_cords("A, 1")
     assert row == "A"
     assert col == 1
