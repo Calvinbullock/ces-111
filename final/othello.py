@@ -25,7 +25,6 @@ def main():
     # Initial board creation and print
     board_list = board_reset()
     print_board(board_list)
-    print("*White's Turn.")
 
     # Runs until user quites program
     while True:
@@ -69,13 +68,6 @@ def main():
             else:
                 index = parse_cordnate_to_index(row, col)
                 make_move(index, board_list)
-
-                if TURN == 0:
-                    print("*White's Turn.")
-                else:
-                    print("*Black's Turn.")
-
-                print(ERROR_MSG)
                 print_board(board_list)
 
 
