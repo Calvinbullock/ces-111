@@ -3,10 +3,14 @@
 import os
 import sys
 
-# Allows me to display errors after the clear console call
+# Allows me to display errors to user after clearing the console.
 ERROR_MSG = ""
-# Tracks whitch players turn it is 0 = W, 1 = B.
-TURN = 0  # TODO -- makes testing difficult might need to move to main function then pass to other functions
+
+# Tracks whitch players turn it is:
+#       0 = W, White.
+#       1 = B, Black.
+# TODO -- makes testing difficult might need to move to main function then pass to other functions
+TURN = 0
 
 
 def main():
