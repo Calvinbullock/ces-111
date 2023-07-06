@@ -106,9 +106,14 @@ def make_move(move_index, board_list):
             index = orig_index
 
             # Directional math compass
-            #   -9
-            # -1  +1
-            #   +9
+            #   -9        N
+            # -1  +1    W   E
+            #   +9        S
+            # TODO find a way to condense the duplicate match case in and out of
+            #       while loop pre loop needs to move to check the sq next
+            #       to the OG sq but then needs to move that same direction
+            #       in the loop.
+            #       TODO opt 1 move to a nother local func 
             match direction:
                 case 0:  # south
                     index += 1
@@ -128,14 +133,11 @@ def make_move(move_index, board_list):
                     index -= 10
 
             # Triggers if there is at least one opposite letter after the given index
-            #       exits if out of board bounds
+            #       exits if out of board bounds.
             while board_list[index] == letter_opposite or index < 0 or index > 80:
-                assert index < 0 or index > 80
+                print(f"L137 {index}")
+                # assert index < 0 or index > 80  # BUG --------------------- BUG
 
-                # TODO find a way to condense the duplicate match case in and out of
-                #       while loop pre loop needs to move to check the sq next
-                #       to the OG sq but then needs to move that same direction
-                #       in the loop.
                 match direction:
                     case 0:  # south
                         index += 1
@@ -154,9 +156,18 @@ def make_move(move_index, board_list):
                     case 7:  # north west
                         index -= 10
 
-            # Check if the opposite letter is at the end of the path.
-            if board_list[index] == turns_letter:
-                return 0
+                # Check if the opposite letter is at the end of the path.
+                if board_list[index] == turns_letter:
+                    print("L162")  # DEBUG
+                    return True
+            
+            print("L165")  # DEBUG
+            return False
+
+            # BUG Working here ---- BUG
+            # BUG Working here ---- BUG
+            #       The if else statment above is triggering wrong.
+            #       To test this bug enter cords F, 4.
 
         return 1
 
