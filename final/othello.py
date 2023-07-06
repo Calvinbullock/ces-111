@@ -18,6 +18,7 @@ def main():
     TODO .......
     """
     board_list = board_reset()
+    print_board(board_list)
 
     # Runs until user quites program
     while True:
@@ -29,7 +30,7 @@ def main():
         user_input = input("> ")
 
         # Clears the Console
-        os.system("cls||clear")
+        # os.system("cls||clear")
         ERROR_MSG = ""
 
         # Parse user choice to action
@@ -52,9 +53,10 @@ def main():
                 print()
 
             else:
-                parse_cordnate_to_index(row, col)
+                index = parse_cordnate_to_index(row, col)
+                make_move(index, board_list)
 
-                print(ERROR_MSG)
+                print(ERROR_MSG)  # TODO use this latter if time
                 print_board(board_list)
 
 
