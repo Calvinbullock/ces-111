@@ -29,6 +29,13 @@ def main():
 
     # Runs until user quites program
     while True:
+        # Print notification messages
+        print(ERROR_MSG)
+        if TURN == 0:
+            print("*White's Turn.")
+        else:
+            print("*Black's Turn.")
+
         # Print menu
         print("Enter a cordinate pair [A, 1]: ")
         print("Type E to quit:")
