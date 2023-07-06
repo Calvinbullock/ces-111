@@ -74,71 +74,30 @@ def make_move(move_index, board_list):
         print("Already a piece there, try again.")
         return 1  # error
 
-    elif TURN == 0:  # make white move
-        board_list[move_index] = "W"
-        TURN = 1
-        return 0
+    def in_line_check(turns_letter, letter_opposite, orig_index, board_list):
+        """
+        Checks if a piece is places next to a diffrent colour and has the
+            same colour nth places from it on the otherside of the opposite
+            colour.
 
-    else:  # Make black move
-        board_list[move_index] = "B"
-        TURN = 0
-        return 0
+        Paramiters
+            [turns_letter: string]    - The letter of the curent turns user.
+            [letter_opposite: string] - The opposite of the curent users letter.
+            [index: int]           - The index that is being changed.
+            [board_list: string list] - The list of board postions.
 
-    in_line_check()
+        Returns
+            True == invalid move
+            False == valid move
+        """
+        # Allows the loop to chack all 8 directions
+        for direction in range(0, 7):
+            index = orig_index
 
-
-# TODO Move to internal func ->
-def in_line_check(turns_letter, letter_opposite, og_index, board_list):
-    """
-    Checks if a piece is places next to a diffrent colour and has the
-        same colour nth places from it on the otherside of the opposite
-        colour.
-
-    Paramiters
-        [turns_letter: string]      The letter of the curent turns user.
-        [letter_opposite: string]   The opposite of the curent users letter.
-        [og_index: int]             The index that is being changed.
-        [board_list: string list]   The list of board postions.
-
-    Returns
-        1 == invalid move
-        0 == valid move
-    """
-    for iteration in range(0, 7):
-        index = og_index
-        direction = 0
-
-        # Directional math compass
-        #   -9
-        # -1  +1
-        #   +9
-        match direction:
-            case 0:  # south
-                index += 1
-            case 1:  # north
-                index -= 1
-            case 2:  # east
-                index += 9
-            case 3:  # west
-                index -= 9
-            case 4:  # north east
-                index -= 8
-            case 5:  # south east
-                index += 10
-            case 6:  # south west
-                index += 8
-            case 7:  # north west
-                index -= 10
-
-        # Triggers if there is at least one opposite letter after the given index
-        #       exits if out of board bounds
-        while board_list[index] == letter_opposite or index < 0 or index > 80:
-            assert index < 0 or index > 80
-
-            # TODO find a way to condense the duplicate match case in and out of
-            #       while loop pre loop needs to move to check the sq next
-            #       to the OG sq but then needs to move that same direction
-            #       in the loop.
+            # Directional math compass
+            #   -9
+            # -1  +1
+            #   +9
             match direction:
                 case 0:  # south
                     index += 1
@@ -156,6 +115,33 @@ def in_line_check(turns_letter, letter_opposite, og_index, board_list):
                     index += 8
                 case 7:  # north west
                     index -= 10
+
+            # Triggers if there is at least one opposite letter after the given index
+            #       exits if out of board bounds
+            while board_list[index] == letter_opposite or index < 0 or index > 80:
+                assert index < 0 or index > 80
+
+                # TODO find a way to condense the duplicate match case in and out of
+                #       while loop pre loop needs to move to check the sq next
+                #       to the OG sq but then needs to move that same direction
+                #       in the loop.
+                match direction:
+                    case 0:  # south
+                        index += 1
+                    case 1:  # north
+                        index -= 1
+                    case 2:  # east
+                        index += 9
+                    case 3:  # west
+                        index -= 9
+                    case 4:  # north east
+                        index -= 8
+                    case 5:  # south east
+                        index += 10
+                    case 6:  # south west
+                        index += 8
+                    case 7:  # north west
+                        index -= 10
 
             # Check if the opposite letter is at the end of the path.
             if board_list[index] == turns_letter:
