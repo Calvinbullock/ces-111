@@ -358,7 +358,7 @@ if __name__ == "__main__":
 
 
 # TODO At least use each of these might be more
-# - testing fucns
+# - testing fuc
 # - Lists
 # - Dictinaries
 # - text files
