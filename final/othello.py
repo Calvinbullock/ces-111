@@ -157,7 +157,7 @@ def parse_cords(cords):
 
     Paramiters
         cords:String - a string with a letter and number seperated by
-                        a comma and space
+                        a comma and space.
 
     Return
         a number and a letter
