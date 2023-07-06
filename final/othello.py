@@ -15,10 +15,17 @@ TURN = 0
 
 def main():
     """
-    TODO .......
+    TODO ....... Exsplane the mian!!!!
+    TODO ....... Exsplane the mian!!!!
+    TODO ....... Exsplane the mian!!!!
     """
+    global ERROR_MSG
+    global TURN
+
+    # Initial board creation and print
     board_list = board_reset()
     print_board(board_list)
+    print("*White's Turn.")
 
     # Runs until user quites program
     while True:
@@ -42,10 +49,10 @@ def main():
             sys.exit()
 
         else:  # Make move
+            # TODO if the try catch in this func breaks this line breaks
+            #       sepretly is there a better / cleaner way to catch
+            #       this error?
             try:
-                # TODO if the try catch in this func breaks this line breaks
-                #       sepretly is there a better / cleaner way to catch
-                #       this error?
                 row, col = parse_cords(user_input)
 
             except TypeError:
@@ -56,7 +63,12 @@ def main():
                 index = parse_cordnate_to_index(row, col)
                 make_move(index, board_list)
 
-                print(ERROR_MSG)  # TODO use this latter if time
+                if TURN == 0:
+                    print("*White's Turn.")
+                else:
+                    print("*Black's Turn.")
+
+                print(ERROR_MSG)
                 print_board(board_list)
 
 
