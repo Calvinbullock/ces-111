@@ -101,75 +101,97 @@ def make_move(move_index, board_list):
             True == invalid move
             False == valid move
         """
-        # Allows the loop to chack all 8 directions
-        for direction in range(0, 7):
-            index = orig_index
+        # Directional math compass
+        #   -9        N
+        # -1  +1    W   E
+        #   +9        S
 
-            # Directional math compass
-            #   -9        N
-            # -1  +1    W   E
-            #   +9        S
-            # TODO find a way to condense the duplicate match case in and out of
-            #       while loop pre loop needs to move to check the sq next
-            #       to the OG sq but then needs to move that same direction
-            #       in the loop.
-            #       TODO opt 1 move to a nother local func 
-            match direction:
-                case 0:  # south
-                    index += 1
-                case 1:  # north
-                    index -= 1
-                case 2:  # east
-                    index += 9
-                case 3:  # west
-                    index -= 9
-                case 4:  # north east
-                    index -= 8
-                case 5:  # south east
-                    index += 10
-                case 6:  # south west
-                    index += 8
-                case 7:  # north west
-                    index -= 10
+        north_index = index - 1
+        east_index = index + 9
+        south_index = index + 1
+        west_index = index - 9
+        north_east_index = index - 8
+        south_east_index = index + 10
+        south_west_index = index + 8
+        north_west_index = index - 10
 
-            # Triggers if there is at least one opposite letter after the given index
-            #       exits if out of board bounds.
-            while board_list[index] == letter_opposite or index < 0 or index > 80:
-                print(f"L137 {index}")
-                # assert index < 0 or index > 80  # BUG --------------------- BUG
+        # Triggers if there is at least one opposite letter after the given index
+        #       exits if out of board bounds.
+        while board_list[index] == opposite_letter or index < 0 or index > 80:
+            print(f"L137 {index}")
+            # assert index < 0 or index > 80  # BUG --------------------- BUG
 
-                match direction:
-                    case 0:  # south
-                        index += 1
-                    case 1:  # north
-                        index -= 1
-                    case 2:  # east
-                        index += 9
-                    case 3:  # west
-                        index -= 9
-                    case 4:  # north east
-                        index -= 8
-                    case 5:  # south east
-                        index += 10
-                    case 6:  # south west
-                        index += 8
-                    case 7:  # north west
-                        index -= 10
+            # Lambda checks if the value at direction_index is
+            #       equal to the letter.
+            valid = (
+                lambda direction_index, letter: board_list[direction_index] == letter
+            )
 
-                # Check if the opposite letter is at the end of the path.
-                if board_list[index] == turns_letter:
-                    print("L162")  # DEBUG
-                    return True
-            
-            print("L165")  # DEBUG
-            return False
+            if valid(north_index, opposite_letter):
+                north_index -= 1
 
-            # BUG Working here ---- BUG
-            # BUG Working here ---- BUG
-            #       The if else statment above is triggering wrong.
-            #       To test this bug enter cords F, 4.
+            if valid(east_index, opposite_letter):
+                east_index += 9
 
-        return 1
+            if valid(south_index, opposite_letter):
+                south_index += 1
+
+            if valid(west_index, opposite_letter):
+                west_index -= 9
+
+            if valid(north_east_index, opposite_letter):
+                north_east_index -= 8
+
+            if valid(south_east_index, opposite_letter):
+                south_east_index += 10
+
+            if valid(south_west_index, opposite_letter):
+                south_west_index += 8
+
+            if valid(north_west_index, opposite_letter):
+                north_west_index -= 10
+
+            # TODO -- this is what I need to go to.
+            # TODO -- this is what I need to go to.
+            # if valid(op_letter)
+            #       add to direction
+            #
+            # elif valid(turn_letter):
+            #       revers direction and ...
+            #       filter() for oposite letter and change to turns_letter
+
+            # Check if the opposite letter is at the end of the path.
+            if board_list[index] == turns_letter:
+                print("L162")  # DEBUG
+                return True
+
+        print("L165")  # DEBUG
+        return False
+
+        # BUG Working here ---- BUG
+        # BUG Working here ---- BUG
+        #       The if else statment above is triggering wrong.
+        #       To test this bug enter cords F, 4.
+
+    # Check if square is ocupied
+    if board_list[move_index] == "W" or board_list[move_index] == "B":
+        print("Already a piece there, try again.")
+        return 1  # error
+
+    elif TURN == 0:  # make white move
+        if in_line_check("W", "B", move_index, board_list):
+            board_list[move_index] = "W"
+            TURN = 1
+            return 0
+
+    else:  # Make black move
+        if in_line_check("B", "W", move_index, board_list):
+            board_list[move_index] = "B"
+            TURN = 0
+            return 0
+
+    ERROR_MSG = "Invalid move please place piece next to opposing player"
+    return 1
 
 
 def parse_cords(cords):
