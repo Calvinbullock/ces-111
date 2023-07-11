@@ -372,6 +372,9 @@ def print_board(list):
         # print(f" {index} |", end="")
 
     print()
+    print("-------------------------------------")
+
+    print()
     print()
 
 
