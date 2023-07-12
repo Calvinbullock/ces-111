@@ -80,21 +80,31 @@ def main():
 
 def make_move(move_index, board_list):
     """
-    This function checks whose turn it is then places the piece in the
-        user specified index.
+    Checks if a piece is places next to a diffrent colour and has the
+        same colour nth places from it on the otherside of the oponites
+        colour. This does the math in the positive directions.
 
     Paramiters
-        [move_index: int] The index that the user wants to place a piece.
-        [board_list: string list] The list of pieces and there postions.
+        [index: int]              - The index that is being changed.
+        [turns_letter: string]    - The letter of the curent turns user.
+        [letter_opposite: string] - The opposite of the curent users letter.
+        [direction: int]          - The number of indexs to move the 
+                                            needed direction.   
+        [valid: function]         - This is a lambda function that checks 
+                                            if the value at direction_index 
+                                            is equal to the letter..
+        [board_list: string list] - The list of board postions.
 
-    return
-        1 == error
-        0 == Go ahead
-    """
+    Returns
+        True == invalid move
+        False == valid move
+        """
     global TURN
     global ERROR_MSG
 
     def change_letter(turn_letter, index_list, board_list):
+        """
+        """
         for index in index_list:
             board_list[index] = turn_letter
 
@@ -103,8 +113,8 @@ def make_move(move_index, board_list):
     ):
         """
         Checks if a piece is places next to a diffrent colour and has the
-            same colour nth places from it on the otherside of the opposite
-            colour.
+            same colour nth places from it on the otherside of the oponites
+            colour. This does the math in the positive directions.
 
         Paramiters
             [turns_letter: string]    - The letter of the curent turns user.
@@ -138,13 +148,18 @@ def make_move(move_index, board_list):
     ):
         """
         Checks if a piece is places next to a diffrent colour and has the
-            same colour nth places from it on the otherside of the opposite
-            colour.
+            same colour nth places from it on the otherside of the oponites
+            colour. This does the math in the positive directions.
 
         Paramiters
+            [index: int]              - The index that is being changed.
             [turns_letter: string]    - The letter of the curent turns user.
             [letter_opposite: string] - The opposite of the curent users letter.
-            [index: int]           - The index that is being changed.
+            [direction: int]          - The number of indexs to move the 
+                                                needed direction.   
+            [valid: function]         - This is a lambda function that checks 
+                                                if the value at direction_index 
+                                                is equal to the letter..
             [board_list: string list] - The list of board postions.
 
         Returns
@@ -458,8 +473,8 @@ def print_board(list):
             print("-------------------------------------")
             print("|", end="")
 
-        print(f" {item} |", end="")  # -- DEBUG
-        # print(f" {index} |", end="")
+        print(f" {item} |", end="")
+        # print(f" {index} |", end="") # DEBUG
 
     print()
     print("-------------------------------------")
