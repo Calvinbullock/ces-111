@@ -79,11 +79,13 @@ def make_move(move_index, board_list):
     Paramiters
         [move_index: int] The index that the user wants to place a piece.
         [board_list: string list] The list of pieces and there postions.
+
+    return
+        1 == error
+        0 == Go ahead
     """
-    # Check if square is ocupied
-    if board_list[move_index] == "W" or board_list[move_index] == "B":
-        print("Already a piece there, try again.")
-        return 1  # error
+    global TURN
+    global ERROR_MSG
 
     def change_letter(turn_letter, index_list, board_list):
         for index in index_list:
@@ -160,37 +162,59 @@ def make_move(move_index, board_list):
         return False
 
     # Directional math compass
+    #   -9        N
+    # -1  +1    W   E
+    #   +9        S
 
-            if valid(south_east_index, opposite_letter):
-                south_east_index += 10
+    south_index = move_index + 1
+    east_index = move_index + 9
+    south_west_index = move_index + 8
+    south_east_index = move_index + 10
 
-            if valid(south_west_index, opposite_letter):
-                south_west_index += 8
+    north_index = move_index - 1
+    west_index = move_index - 9
+    north_east_index = move_index - 8
+    north_west_index = move_index - 10
 
-            if valid(north_west_index, opposite_letter):
-                north_west_index -= 10
+    # LAMBDA checks if the value at direction_index is
+    #       equal to the letter.
+    valid = lambda index, letter: board_list[index] == letter
 
-            # TODO -- this is what I need to go to.
-            # TODO -- this is what I need to go to.
-            # if valid(op_letter)
-            #       add to direction
-            #
-            # elif valid(turn_letter):
-            #       revers direction and ...
-            #       filter() for oposite letter and change to turns_letter
+    if TURN == 0:
+        turn_letter = "W"
+        opposite_letter = "B"
 
-            # Check if the opposite letter is at the end of the path.
-            if board_list[index] == turns_letter:
-                print("L162")  # DEBUG
-                return True
+    else:
+        turn_letter = "B"
+        opposite_letter = "W"
 
-        print("L165")  # DEBUG
-        return False
+    # Check all directions return True if move is valid, also change all
+    #       letters to this players
+    south_bool = in_line_check_pos(
+        south_index, turn_letter, opposite_letter, 1, valid, board_list
+    )
+    east_bool = in_line_check_pos(
+        east_index, turn_letter, opposite_letter, 9, valid, board_list
+    )
+    SW_bool = in_line_check_pos(
+        south_west_index, turn_letter, opposite_letter, 8, valid, board_list
+    )
+    SE_bool = in_line_check_pos(
+        south_east_index, turn_letter, opposite_letter, 10, valid, board_list
+    )
 
-        # BUG Working here ---- BUG
-        # BUG Working here ---- BUG
-        #       The if else statment above is triggering wrong.
-        #       To test this bug enter cords F, 4.
+    north_bool = in_line_check_neg(
+        north_index, turn_letter, opposite_letter, 1, valid, board_list
+    )
+    west_bool = in_line_check_neg(
+        west_index, turn_letter, opposite_letter, 9, valid, board_list
+    )
+    NE_bool = in_line_check_neg(
+        north_east_index, turn_letter, opposite_letter, 8, valid, board_list
+    )
+    NW_bool = in_line_check_neg(
+        north_west_index, turn_letter, opposite_letter, 10, valid, board_list
+    )
 
     # Check if square is ocupied
     if board_list[move_index] == "W" or board_list[move_index] == "B":
@@ -198,13 +222,31 @@ def make_move(move_index, board_list):
         return 1  # error
 
     elif TURN == 0:  # make white move
-        if in_line_check("W", "B", move_index, board_list):
+        if (
+            south_bool
+            or east_bool
+            or SW_bool
+            or SE_bool
+            or north_bool
+            or west_bool
+            or NE_bool
+            or NW_bool
+        ):
             board_list[move_index] = "W"
             TURN = 1
             return 0
 
-    else:  # Make black move
-        if in_line_check("B", "W", move_index, board_list):
+    elif TURN == 1:  # Make black move
+        if (
+            south_bool
+            or east_bool
+            or SW_bool
+            or SE_bool
+            or north_bool
+            or west_bool
+            or NE_bool
+            or NW_bool
+        ):
             board_list[move_index] = "B"
             TURN = 0
             return 0
