@@ -85,7 +85,13 @@ def make_move(move_index, board_list):
         print("Already a piece there, try again.")
         return 1  # error
 
-    def in_line_check(turns_letter, letter_opposite, orig_index, board_list):
+    def change_letter(turn_letter, index_list, board_list):
+        for index in index_list:
+            board_list[index] = turn_letter
+
+    def in_line_check_pos(
+        index, turn_letter, opposite_letter, direction, valid, board_list
+    ):
         """
         Checks if a piece is places next to a diffrent colour and has the
             same colour nth places from it on the otherside of the opposite
@@ -101,46 +107,59 @@ def make_move(move_index, board_list):
             True == invalid move
             False == valid move
         """
-        # Directional math compass
-        #   -9        N
-        # -1  +1    W   E
-        #   +9        S
+        index_list = []
 
-        north_index = index - 1
-        east_index = index + 9
-        south_index = index + 1
-        west_index = index - 9
-        north_east_index = index - 8
-        south_east_index = index + 10
-        south_west_index = index + 8
-        north_west_index = index - 10
-
-        # Triggers if there is at least one opposite letter after the given index
-        #       exits if out of board bounds.
         while board_list[index] == opposite_letter or index < 0 or index > 80:
-            print(f"L137 {index}")
-            # assert index < 0 or index > 80  # BUG --------------------- BUG
+            direction_index = index + direction
 
-            # Lambda checks if the value at direction_index is
-            #       equal to the letter.
-            valid = (
-                lambda direction_index, letter: board_list[direction_index] == letter
-            )
+            # All the if statments check if the letter at direction_index
+            #       is equal to opposite letter if yes move the direction.
+            if valid(direction_index, opposite_letter):
+                direction_index -= direction
+                index_list.append(direction_index)
 
-            if valid(north_index, opposite_letter):
-                north_index -= 1
+            elif valid(direction_index, turn_letter):
+                change_letter(turn_letter, index_list, board_list)
+                return True
 
-            if valid(east_index, opposite_letter):
-                east_index += 9
+        return False
 
-            if valid(south_index, opposite_letter):
-                south_index += 1
+    def in_line_check_neg(
+        index, turn_letter, opposite_letter, direction, valid, board_list
+    ):
+        """
+        Checks if a piece is places next to a diffrent colour and has the
+            same colour nth places from it on the otherside of the opposite
+            colour.
 
-            if valid(west_index, opposite_letter):
-                west_index -= 9
+        Paramiters
+            [turns_letter: string]    - The letter of the curent turns user.
+            [letter_opposite: string] - The opposite of the curent users letter.
+            [index: int]           - The index that is being changed.
+            [board_list: string list] - The list of board postions.
 
-            if valid(north_east_index, opposite_letter):
-                north_east_index -= 8
+        Returns
+            True == invalid move
+            False == valid move
+        """
+        index_list = []
+
+        while board_list[index] == opposite_letter or index < 0 or index > 80:
+            direction_index = index - direction
+
+            # All the if statments check if the letter at direction_index
+            #       is equal to opposite letter if yes move the direction.
+            if valid(direction_index, opposite_letter):
+                direction_index -= direction
+                index_list.append(direction_index)
+
+            elif valid(direction_index, turn_letter):
+                change_letter(turn_letter, index_list, board_list)
+                return True
+
+        return False
+
+    # Directional math compass
 
             if valid(south_east_index, opposite_letter):
                 south_east_index += 10
