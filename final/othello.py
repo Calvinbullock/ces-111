@@ -3,6 +3,13 @@
 import os
 import sys
 
+# ======================================================== #
+# TODO Check for move out of bounds.
+# TODO high scores save as a dict to a file.
+#
+#
+# ======================================================== #
+
 # Allows me to display errors to user after clearing the console.
 ERROR_MSG = ""
 
@@ -15,9 +22,9 @@ TURN = 0
 
 def main():
     """
-    TODO ....... Exsplane the mian!!!!
-    TODO ....... Exsplane the mian!!!!
-    TODO ....... Exsplane the mian!!!!
+    TODO ....... Exsplane the main!!!!
+    TODO ....... Exsplane the main!!!!
+    TODO ....... Exsplane the main!!!!
     """
     global ERROR_MSG
     global TURN
@@ -466,10 +473,10 @@ if __name__ == "__main__":
 
 
 # TODO At least use each of these might be more
-# - testing fuc
-# - Lists
-# - Dictinaries
-# - text files
-# - exception handeling
-# - Objects
-# - lamda functions / functions in functions
+# 05 - testing fuc
+# 07 - Lists
+# 08 - Dictinaries
+# 09 - text files
+# 10 - exception handeling
+# 11 - lamda functions / functions in functions
+# 12 - Objects
