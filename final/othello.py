@@ -113,7 +113,9 @@ def make_move(move_index, board_list):
             [board_list: ]  - The list of all pieces on the board.
 
         """
+        print(f"L117 ------------------- {len(index_list)} {turn_letter}")  # DEBUG
         for index in index_list:
+            print(f"L118 {index}")  # DEBUG
             board_list[index] = turn_letter
 
     def in_line_check_pos(
@@ -135,21 +137,37 @@ def make_move(move_index, board_list):
             False == valid move
         """
         index_list = []
+        at_least_one_oposite_letter = False
+        direction_index = index + direction
+        print(f"141-Start ----")
 
-        while board_list[index] == opposite_letter or index < 0 or index > 80:
-            direction_index = index + direction
+        while index > 0 or index < 80:
+            print(f"L150 ------- {index}")  # DEBUG
 
             # All the if statments check if the letter at direction_index
             #       is equal to opposite letter if yes move the direction.
             if valid(direction_index, opposite_letter):
-                direction_index -= direction
+                print("153 A")  # DEBUG
+                at_least_one_oposite_letter = True
+                direction_index += direction
                 index_list.append(direction_index)
 
-            elif valid(direction_index, turn_letter):
+            elif valid(direction_index, turn_letter) and at_least_one_oposite_letter:
+                print("197 B")  # DEBUG
                 change_letter(turn_letter, index_list, board_list)
                 return True
 
+            elif direction_index > len(index_list):  # No piece in this direction
+                print("201 C")  # DEBUG
+                return False
+
+            else:
+                direction_index += direction
+                print("201 D")  # DEBUG
+
         return False
+
+        # TODO BUG --- if elif not not trigering
 
     def in_line_check_neg(
         index, turn_letter, opposite_letter, direction, valid, board_list
@@ -175,19 +193,33 @@ def make_move(move_index, board_list):
             False == valid move
         """
         index_list = []
+        at_least_one_oposite_letter = False
+        direction_index = index - direction
+        print(f"141-Start ----------------------------------------- neg{direction}")
 
-        while board_list[index] == opposite_letter or index < 0 or index > 80:
-            direction_index = index - direction
+        while index > 0 or index < 80:
+            print(f"L150 ------- --------- Index = {direction_index}")  # DEBUG
 
             # All the if statments check if the letter at direction_index
             #       is equal to opposite letter if yes move the direction.
             if valid(direction_index, opposite_letter):
-                direction_index -= direction
+                print("191 A")  # DEBUG
+                at_least_one_oposite_letter = True
                 index_list.append(direction_index)
+                direction_index -= direction
 
-            elif valid(direction_index, turn_letter):
+            elif valid(direction_index, turn_letter) and at_least_one_oposite_letter:
+                print("197 B")  # DEBUG
                 change_letter(turn_letter, index_list, board_list)
                 return True
+
+            elif direction_index < 0:  # No piece in this direction
+                print("228 C")  # DEBUG
+                return False
+
+            else:
+                direction_index -= direction
+                print(f"201 D")  # DEBUG
 
         return False
 
@@ -196,15 +228,15 @@ def make_move(move_index, board_list):
     # -1  +1    W   E
     #   +9        S
 
-    south_index = move_index + 1
-    east_index = move_index + 9
-    south_west_index = move_index + 8
-    south_east_index = move_index + 10
+    # south_index = move_index + 1
+    # east_index = move_index + 9
+    # south_west_index = move_index + 8
+    # south_east_index = move_index + 10
 
-    north_index = move_index - 1
-    west_index = move_index - 9
-    north_east_index = move_index - 8
-    north_west_index = move_index - 10
+    # north_index = move_index - 1
+    # west_index = move_index - 9
+    # north_east_index = move_index - 8
+    # north_west_index = move_index - 10
 
     # LAMBDA checks if the value at direction_index is
     #       equal to the letter.
@@ -219,32 +251,34 @@ def make_move(move_index, board_list):
         turn_letter = "B"
         opposite_letter = "W"
 
+    print("227")  # DEBUG
+
     # Check all directions return True if move is valid, also change all
     #       letters to this players
     south_bool = in_line_check_pos(
-        south_index, turn_letter, opposite_letter, 1, valid, board_list
+        move_index, turn_letter, opposite_letter, 9, valid, board_list
     )
     east_bool = in_line_check_pos(
-        east_index, turn_letter, opposite_letter, 9, valid, board_list
+        move_index, turn_letter, opposite_letter, 1, valid, board_list
     )
     SW_bool = in_line_check_pos(
-        south_west_index, turn_letter, opposite_letter, 8, valid, board_list
+        move_index, turn_letter, opposite_letter, 8, valid, board_list
     )
     SE_bool = in_line_check_pos(
-        south_east_index, turn_letter, opposite_letter, 10, valid, board_list
+        move_index, turn_letter, opposite_letter, 10, valid, board_list
     )
 
     north_bool = in_line_check_neg(
-        north_index, turn_letter, opposite_letter, 1, valid, board_list
+        move_index, turn_letter, opposite_letter, 9, valid, board_list
     )
     west_bool = in_line_check_neg(
-        west_index, turn_letter, opposite_letter, 9, valid, board_list
+        move_index, turn_letter, opposite_letter, 1, valid, board_list
     )
     NE_bool = in_line_check_neg(
-        north_east_index, turn_letter, opposite_letter, 8, valid, board_list
+        move_index, turn_letter, opposite_letter, 8, valid, board_list
     )
     NW_bool = in_line_check_neg(
-        north_west_index, turn_letter, opposite_letter, 10, valid, board_list
+        move_index, turn_letter, opposite_letter, 10, valid, board_list
     )
 
     # Check if square is ocupied
