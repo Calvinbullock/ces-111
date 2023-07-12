@@ -13,10 +13,11 @@ import sys
 # Allows me to display errors to user after clearing the console.
 ERROR_MSG = ""
 
+# TODO -- makes testing difficult might need to move to main function
+#       then pass to other functions
 # Tracks whitch players turn it is:
 #       0 = W, White.
 #       1 = B, Black.
-# TODO -- makes testing difficult might need to move to main function then pass to other functions
 TURN = 0
 
 
@@ -113,9 +114,7 @@ def make_move(move_index, board_list):
             [board_list: ]  - The list of all pieces on the board.
 
         """
-        print(f"L117 ------------------- {len(index_list)} {turn_letter}")  # DEBUG
         for index in index_list:
-            print(f"L118 {index}")  # DEBUG
             board_list[index] = turn_letter
 
     def in_line_check_pos(
@@ -139,39 +138,30 @@ def make_move(move_index, board_list):
         index_list = []
         at_least_one_oposite_letter = False
         direction_index = index + direction
-        print(f"141-Start ----------------------------------------- neg{direction}")
 
         while (
             direction_index > 0
             and direction_index < 80
             and not valid(direction_index, "_")
         ):
-            print(f"L145 ------- --------- Index = {direction_index}")  # DEBUG
-
             # All the if statments check if the letter at direction_index
             #       is equal to opposite letter if yes move the direction.
             if valid(direction_index, opposite_letter):
-                print("150 A")  # DEBUG
                 at_least_one_oposite_letter = True
                 index_list.append(direction_index)
                 direction_index += direction
 
             elif valid(direction_index, turn_letter) and at_least_one_oposite_letter:
-                print("156 B")  # DEBUG
                 change_letter(turn_letter, index_list, board_list)
                 return True
 
             elif direction_index < 0:  # No piece in this direction
-                print("161 C")  # DEBUG
                 return False
 
             else:
                 direction_index += direction
-                print(f"166 D")  # DEBUG
 
         return False
-
-        # TODO BUG --- if elif not not trigering
 
     def in_line_check_neg(
         index, turn_letter, opposite_letter, direction, valid, board_list
@@ -199,35 +189,28 @@ def make_move(move_index, board_list):
         index_list = []
         at_least_one_oposite_letter = False
         direction_index = index - direction
-        print(f"198-Start ----------------------------------------- neg{direction}")
 
         while (
             direction_index > 0
             and direction_index < 80
             and not valid(direction_index, "_")
         ):
-            print(f"201 ------- --------- Index = {direction_index}")  # DEBUG
-
             # All the if statments check if the letter at direction_index
             #       is equal to opposite letter if yes move the direction.
             if valid(direction_index, opposite_letter):
-                print("206 A")  # DEBUG
                 at_least_one_oposite_letter = True
                 index_list.append(direction_index)
                 direction_index -= direction
 
             elif valid(direction_index, turn_letter) and at_least_one_oposite_letter:
-                print("212 B")  # DEBUG
                 change_letter(turn_letter, index_list, board_list)
                 return True
 
             elif direction_index < 0:  # No piece in this direction
-                print("217 C")  # DEBUG
                 return False
 
             else:
                 direction_index -= direction
-                print(f"222 D")  # DEBUG
 
         return False
 
@@ -258,8 +241,6 @@ def make_move(move_index, board_list):
     else:
         turn_letter = "B"
         opposite_letter = "W"
-
-    print("227")  # DEBUG
 
     # Check all directions return True if move is valid, also change all
     #       letters to this players
@@ -294,7 +275,7 @@ def make_move(move_index, board_list):
         print("Already a piece there, try again.")
         return 1  # error
 
-    elif TURN == 0:  # make white move
+    elif TURN == 0:  # Make white move
         if (
             south_bool
             or east_bool
@@ -525,7 +506,6 @@ def print_board(list):
             print("|", end="")
 
         print(f" {item} |", end="")
-        # print(f" {index} |", end="") # DEBUG
 
     print()
     print("-------------------------------------")
