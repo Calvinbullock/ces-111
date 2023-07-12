@@ -139,31 +139,35 @@ def make_move(move_index, board_list):
         index_list = []
         at_least_one_oposite_letter = False
         direction_index = index + direction
-        print(f"141-Start ----")
+        print(f"141-Start ----------------------------------------- neg{direction}")
 
-        while index > 0 or index < 80:
-            print(f"L150 ------- {index}")  # DEBUG
+        while (
+            direction_index > 0
+            and direction_index < 80
+            and not valid(direction_index, "_")
+        ):
+            print(f"L145 ------- --------- Index = {direction_index}")  # DEBUG
 
             # All the if statments check if the letter at direction_index
             #       is equal to opposite letter if yes move the direction.
             if valid(direction_index, opposite_letter):
-                print("153 A")  # DEBUG
+                print("150 A")  # DEBUG
                 at_least_one_oposite_letter = True
-                direction_index += direction
                 index_list.append(direction_index)
+                direction_index += direction
 
             elif valid(direction_index, turn_letter) and at_least_one_oposite_letter:
-                print("197 B")  # DEBUG
+                print("156 B")  # DEBUG
                 change_letter(turn_letter, index_list, board_list)
                 return True
 
-            elif direction_index > len(index_list):  # No piece in this direction
-                print("201 C")  # DEBUG
+            elif direction_index < 0:  # No piece in this direction
+                print("161 C")  # DEBUG
                 return False
 
             else:
                 direction_index += direction
-                print("201 D")  # DEBUG
+                print(f"166 D")  # DEBUG
 
         return False
 
@@ -195,31 +199,35 @@ def make_move(move_index, board_list):
         index_list = []
         at_least_one_oposite_letter = False
         direction_index = index - direction
-        print(f"141-Start ----------------------------------------- neg{direction}")
+        print(f"198-Start ----------------------------------------- neg{direction}")
 
-        while index > 0 or index < 80:
-            print(f"L150 ------- --------- Index = {direction_index}")  # DEBUG
+        while (
+            direction_index > 0
+            and direction_index < 80
+            and not valid(direction_index, "_")
+        ):
+            print(f"201 ------- --------- Index = {direction_index}")  # DEBUG
 
             # All the if statments check if the letter at direction_index
             #       is equal to opposite letter if yes move the direction.
             if valid(direction_index, opposite_letter):
-                print("191 A")  # DEBUG
+                print("206 A")  # DEBUG
                 at_least_one_oposite_letter = True
                 index_list.append(direction_index)
                 direction_index -= direction
 
             elif valid(direction_index, turn_letter) and at_least_one_oposite_letter:
-                print("197 B")  # DEBUG
+                print("212 B")  # DEBUG
                 change_letter(turn_letter, index_list, board_list)
                 return True
 
             elif direction_index < 0:  # No piece in this direction
-                print("228 C")  # DEBUG
+                print("217 C")  # DEBUG
                 return False
 
             else:
                 direction_index -= direction
-                print(f"201 D")  # DEBUG
+                print(f"222 D")  # DEBUG
 
         return False
 
