@@ -88,22 +88,30 @@ def make_move(move_index, board_list):
         [index: int]              - The index that is being changed.
         [turns_letter: string]    - The letter of the curent turns user.
         [letter_opposite: string] - The opposite of the curent users letter.
-        [direction: int]          - The number of indexs to move the 
-                                            needed direction.   
-        [valid: function]         - This is a lambda function that checks 
-                                            if the value at direction_index 
+        [direction: int]          - The number of indexs to move the
+                                            needed direction.
+        [valid: function]         - This is a lambda function that checks
+                                            if the value at direction_index
                                             is equal to the letter..
         [board_list: string list] - The list of board postions.
 
     Returns
         True == invalid move
         False == valid move
-        """
+    """
     global TURN
     global ERROR_MSG
 
     def change_letter(turn_letter, index_list, board_list):
         """
+        This function swaps the oponites pieces with the turns pieces
+                if move is valid.
+
+        Paramiters:
+            [turn_letter: ] - The letter that the values will be set to.
+            [index_list: ]  - A list of indexs that need to be switched.
+            [board_list: ]  - The list of all pieces on the board.
+
         """
         for index in index_list:
             board_list[index] = turn_letter
@@ -155,10 +163,10 @@ def make_move(move_index, board_list):
             [index: int]              - The index that is being changed.
             [turns_letter: string]    - The letter of the curent turns user.
             [letter_opposite: string] - The opposite of the curent users letter.
-            [direction: int]          - The number of indexs to move the 
-                                                needed direction.   
-            [valid: function]         - This is a lambda function that checks 
-                                                if the value at direction_index 
+            [direction: int]          - The number of indexs to move the
+                                                needed direction.
+            [valid: function]         - This is a lambda function that checks
+                                                if the value at direction_index
                                                 is equal to the letter..
             [board_list: string list] - The list of board postions.
 
@@ -202,6 +210,7 @@ def make_move(move_index, board_list):
     #       equal to the letter.
     valid = lambda index, letter: board_list[index] == letter
 
+    # Sets turn and opposite letters
     if TURN == 0:
         turn_letter = "W"
         opposite_letter = "B"
