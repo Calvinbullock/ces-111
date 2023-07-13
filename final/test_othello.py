@@ -97,7 +97,8 @@ def test_make_move():
 
     assert make_move(40, board_list) == 1  # checks if sq is ocupied (sq ocupied)
     assert make_move(10, board_list) == 1  # checks if sq is ocupied (sq empty)
-    assert make_move(42, board_list) == 1  # checks if wount work as turn is not
+    assert make_move(42, board_list) == 1  # checks if move is valid (not valid)
+    assert make_move(39, board_list) == 0  # checks if move is valid (valid)
 
 
 def test_parse_cordnate_to_index():
