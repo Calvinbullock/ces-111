@@ -1,11 +1,13 @@
 # Calvin Bullock CSE-111 Final
+# June 19th 2023
 
 import os
 import sys
 
 # ======================================================== #
 # TODO Check for move out of bounds.
-# TODO high scores save as a dict to a file.
+# TODO High scores save as a dict to a file.
+# TODO how to check for game over?.....
 #
 # ======================================================== #
 
@@ -22,9 +24,9 @@ TURN = 0
 
 def main():
     """
-    TODO ....... Exsplane the main!!!!
-    TODO ....... Exsplane the main!!!!
-    TODO ....... Exsplane the main!!!!
+    This is the main function of an othello game. This function will take 
+            useer input and direct the path of the 
+            stack based on that user input.
     """
     global ERROR_MSG
     global TURN
@@ -53,6 +55,7 @@ def main():
         # os.system("cls||clear")
         ERROR_MSG = ""
 
+        # Main game stack
         # Parse user choice to action
         if user_input == "R":  # Reset Board
             board_list = board_reset()
@@ -72,7 +75,7 @@ def main():
                 print("ERROR: Invalid cordanates please try again.")
                 print()
 
-            else:
+            else:  # Good to go no errors
                 index = parse_cordnate_to_index(row, col)
                 make_move(index, board_list)
                 print_board(board_list)
