@@ -83,6 +83,7 @@ def main():
 
                 else:
                     print("ERROR: Invalid cordanates please try again.")
+                    print()
 
 
 def make_move(move_index, board_list):
