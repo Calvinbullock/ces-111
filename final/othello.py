@@ -3,6 +3,7 @@
 
 import os
 import sys
+import re
 
 # ======================================================== #
 # TODO Check for move out of bounds.
@@ -73,8 +74,14 @@ def main():
 
             else:  # Good to go no errors
                 index = parse_cordnate_to_index(row, col)
-                make_move(index, board_list)
-                print_board(board_list)
+
+                # TODO handel if the index returned is out of range 0 > index > len(boad_list)
+                if 0 > index > len(board_list) or index == 1:
+                    make_move(index, board_list)
+                    print_board(board_list)
+
+                else:
+                    print("ERROR: Invalid cordanates please try again.")
 
 
 def make_move(move_index, board_list):
@@ -353,6 +360,11 @@ def parse_cordnate_to_index(row, col):
 
     """
     assert row.upper() == row
+
+    # Checks if the letter entered for the Row is within A - H
+    #   if not return 0 to be caught as an error in main
+    if re.match(r"[a-zI-Z]", row):
+        return 0
 
     # Parse the letter to eqivalent number
     match row:
