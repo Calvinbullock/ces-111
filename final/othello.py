@@ -6,7 +6,7 @@ import sys
 
 # ======================================================== #
 # TODO Check for move out of bounds.
-# TODO High scores save as a dict to a file.
+# TODO High scores (how many moves it took) save as a dict to a file.
 # TODO how to check for game over?.....
 #
 # ======================================================== #
@@ -65,13 +65,9 @@ def main():
             sys.exit()
 
         else:  # Make move
-            # TODO if the try catch in this func breaks this line breaks
-            #       sepretly is there a better / cleaner way to catch
-            #       this error?
-            try:
-                row, col = parse_cords(user_input)
+            row, col = parse_cords(user_input)
 
-            except TypeError:
+            if row == None:  # Invalid cords
                 print("ERROR: Invalid cordanates please try again.")
                 print()
 
@@ -333,9 +329,12 @@ def parse_cords(cords):
         return row, col
 
     except IndexError:
-        pass
+        return None, None
+
+    except ValueError:
+        return None, None
         # TODO better way to catch this error?
-        # invalided corwardinets will casue an error here and another in the
+        # invalided coordanets will casue an error here and another in the
         #       main function. If I don't catch it here the program crashes,
         #       but the error message is printed in main.
 
