@@ -75,7 +75,8 @@ def main():
             else:  # Good to go no errors
                 index = parse_cordnate_to_index(row, col)
 
-                # TODO handel if the index returned is out of range 0 > index > len(boad_list)
+                # Handels index returned out of range 0 > index > len(boad_list)
+                #       The == 1 is an error condistion from parse_cordnate_to_index
                 if 0 > index > len(board_list) or index == 1:
                     make_move(index, board_list)
                     print_board(board_list)
