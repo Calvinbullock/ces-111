@@ -52,7 +52,7 @@ def main():
         user_input = input("> ")
 
         # Clears the Console
-        # os.system("cls||clear")
+        os.system("cls||clear")
         ERROR_MSG = ""
 
         # Main game stack
