@@ -7,7 +7,6 @@ import sys
 # TODO Check for move out of bounds.
 # TODO high scores save as a dict to a file.
 #
-#
 # ======================================================== #
 
 # Allows me to display errors to user after clearing the console.
@@ -521,8 +520,8 @@ if __name__ == "__main__":
 # TODO At least use each of these might be more
 # 05 - testing fuc
 # 07 - Lists
-# 08 - Dictinaries
-# 09 - text files
+# 08* - Dictinaries
+# 09* - text files
 # 10 - exception handeling
 # 11 - lamda functions / functions in functions
 # 12 - Objects
