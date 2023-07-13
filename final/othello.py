@@ -12,7 +12,8 @@ import re
 #
 # ======================================================== #
 
-# Allows me to display errors to user after clearing the console.
+# Allows me to display errors to user after clearing the console and from
+#       deeper functions.
 ERROR_MSG = ""
 
 # TODO -- makes testing make_move() difficult might need to move to
