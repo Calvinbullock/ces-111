@@ -365,7 +365,8 @@ def parse_cordnate_to_index(row, col):
     assert row.upper() == row
 
     # Checks if the letter entered for the Row is within A - H
-    #   if not return 0 to be caught as an error in main
+    #   if not return 0 to be caught as an error in main useing
+    #   regular exsprestions.
     if re.match(r"[a-zI-Z]", row):
         return 0
 
