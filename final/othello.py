@@ -23,6 +23,10 @@ ERROR_MSG = ""
 #       1 = B, Black.
 TURN = 0
 
+# TODO need to implement this still
+WHITE_MOVE_COUNT = 0
+BLACK_MOVE_COUNT = 0
+
 
 def main():
     """
