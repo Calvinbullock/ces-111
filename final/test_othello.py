@@ -131,12 +131,12 @@ def test_parse_cords():
     assert row == "F"
     assert col == 4
 
-    # TODO Breaks
+    # TODO Breaks because values switched (still need to handel properly)
     # row, col = parse_cords("4, F")
     # assert row == "F"
     # assert col == 4
 
-    # TODO becasue out of bounds
+    # TODO becasue out of bounds (still need to handel properly)
     # row, col = parse_cords("f,4")
     # assert row == "F"
     # assert col == 4
