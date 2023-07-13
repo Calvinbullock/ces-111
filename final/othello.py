@@ -321,6 +321,9 @@ def parse_cords(cords):
     """
     cords = cords.upper()
 
+    # Invalided coordanets will casue an error here and another in the
+    #       main function. If I don't catch it here the program crashes,
+    #       but the error message is printed in main.
     try:
         cord_array = cords.split(", ")
         row = cord_array[0]
@@ -333,10 +336,6 @@ def parse_cords(cords):
 
     except ValueError:
         return None, None
-        # TODO better way to catch this error?
-        # invalided coordanets will casue an error here and another in the
-        #       main function. If I don't catch it here the program crashes,
-        #       but the error message is printed in main.
 
 
 def parse_cordnate_to_index(row, col):
