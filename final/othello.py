@@ -14,8 +14,8 @@ import sys
 # Allows me to display errors to user after clearing the console.
 ERROR_MSG = ""
 
-# TODO -- makes testing difficult might need to move to main function
-#       then pass to other functions
+# TODO -- makes testing make_move() difficult might need to move to
+#       main function then pass to other functions....
 # Tracks whitch players turn it is:
 #       0 = W, White.
 #       1 = B, Black.
@@ -24,8 +24,8 @@ TURN = 0
 
 def main():
     """
-    This is the main function of an othello game. This function will take 
-            useer input and direct the path of the 
+    This is the main function of an othello game. This function will take
+            useer input and direct the path of the
             stack based on that user input.
     """
     global ERROR_MSG
