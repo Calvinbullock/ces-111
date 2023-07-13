@@ -95,14 +95,14 @@ def test_make_move():
         "_",
     ]
 
-    assert make_move(40, board_list) == 1  # checks if sq is ocupied
-    # assert make_move(10, board_list) == 0 # breaks because turn not inislilized -- so working sorta...
-    # assert make_move(41, board_list) == 0 # breaks because turn not inislilized -- so working sorta...
+    assert make_move(40, board_list) == 1  # checks if sq is ocupied (sq ocupied)
+    assert make_move(10, board_list) == 1  # checks if sq is ocupied (sq empty)
+    assert make_move(42, board_list) == 1  # checks if wount work as turn is not
 
 
 def test_parse_cordnate_to_index():
     """
-    Checks if the letter number cords are parsed to the right indexs
+    Checks if the letter number cords are parsed to the right index
     """
     assert parse_cordnate_to_index("A", 1) == 10
     assert parse_cordnate_to_index("A", 5) == 46
@@ -111,7 +111,8 @@ def test_parse_cordnate_to_index():
 
 def test_parse_cords():
     """
-    Checks if users input string is seperated correctly into a string and int
+    Checks if users input string is seperated correctly into a string
+        and int
     """
     row, col = parse_cords("A, 1")
     assert row == "A"
@@ -129,7 +130,12 @@ def test_parse_cords():
     assert row == "F"
     assert col == 4
 
-    # # TODO breaks because lack of space...
+    # TODO Breaks
+    # row, col = parse_cords("4, F")
+    # assert row == "F"
+    # assert col == 4
+
+    # TODO becasue out of bounds
     # row, col = parse_cords("f,4")
     # assert row == "F"
     # assert col == 4

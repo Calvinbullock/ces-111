@@ -25,8 +25,8 @@ TURN = 0
 def main():
     """
     This is the main function of an othello game. This function will take
-            useer input and direct the path of the
-            stack based on that user input.
+            useer input and direct the path of the stack based on that
+            user input.
     """
     global ERROR_MSG
     global TURN
